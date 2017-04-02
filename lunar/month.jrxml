@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="month" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b4c799d0-ddfc-4bb6-baf3-e875ccd89531">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     month.`NO` AS month_NO,
+     month.`OrderID` AS month_OrderID,
+     month.`Month` AS month_Month,
+     month.`Name` AS month_Name,
+     month.`Price` AS month_Price,
+     month.`Total` AS month_Total
+FROM
+     `month` month]]>
+	</queryString>
+	<field name="month_NO" class="java.lang.Integer"/>
+	<field name="month_OrderID" class="java.lang.String"/>
+	<field name="month_Month" class="java.lang.String"/>
+	<field name="month_Name" class="java.lang.String"/>
+	<field name="month_Price" class="java.lang.String"/>
+	<field name="month_Total" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="610" height="79" uuid="42eceb88-4b29-4381-a18a-6cf71aab2a26"/>
+				<imageExpression><![CDATA["C:\\Users\\asus\\Downloads\\logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="211" y="15" width="125" height="20" uuid="96856af5-a6d3-406d-a366-5adeb7f9a1c6"/>
+				<text><![CDATA[ REPORT  MONTHLY]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="0" width="100" height="20" uuid="5fe72d88-35a9-4aee-a3b7-2da07f660bf1"/>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="89" y="0" width="100" height="20" uuid="71b12702-5ee0-4ac6-a783-2ad2a3266563"/>
+				<text><![CDATA[OrderID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="175" y="0" width="100" height="20" uuid="68af3763-6f7e-4035-96d7-002195895736"/>
+				<text><![CDATA[Month]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="275" y="2" width="100" height="20" uuid="d107e873-a05d-4ce1-b311-05067aad48e1"/>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="375" y="0" width="100" height="20" uuid="7ef5f579-1c00-4259-9ab6-7f9b0f3d9a98"/>
+				<text><![CDATA[Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="475" y="2" width="100" height="20" uuid="f5b5b909-8778-462a-a66b-bb04f85f7ad5"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="0" width="100" height="20" uuid="c3b662d1-c9e7-4bf2-a1a0-a5c84428b683"/>
+				<textFieldExpression><![CDATA[$F{month_NO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="89" y="0" width="100" height="20" uuid="ab15d150-cfe0-418b-9918-a762a0095537"/>
+				<textFieldExpression><![CDATA[$F{month_OrderID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="0" width="100" height="20" uuid="4bb5a859-88ea-497b-99e6-5f8a6ad46740"/>
+				<textFieldExpression><![CDATA[$F{month_Month}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="275" y="0" width="100" height="20" uuid="60138a9d-6b2f-4426-80ea-7cc678418daa"/>
+				<textFieldExpression><![CDATA[$F{month_Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="375" y="0" width="100" height="20" uuid="37e0f19a-7db2-4721-a506-210743d14e7f"/>
+				<textFieldExpression><![CDATA[$F{month_Price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="475" y="0" width="100" height="20" uuid="69702b50-a3e7-4ba6-be91-1ef4f1f67824"/>
+				<textFieldExpression><![CDATA[$F{month_Total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="0" width="128" height="20" uuid="1d960672-a7a3-4502-8e76-b5cbb3142086"/>
+				<text><![CDATA[TOTAL :    456623748]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="04dbdc00-5e50-4ac4-964d-5487b15b10a7"/>
+				<text><![CDATA[STL Creative]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="20" width="100" height="20" uuid="cd701536-4577-4cca-9016-43cf1450c233"/>
+				<text><![CDATA[Tel : 098-5683241]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="416" y="34" width="139" height="20" uuid="e594bac0-457f-49cf-9872-8bc71008c9c2"/>
+				<text><![CDATA[Email: suraporn@gmail.com]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

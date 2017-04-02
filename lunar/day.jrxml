@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="day" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="606823a0-afc4-4b02-9b8b-03330c105f39">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     day.`NO` AS day_NO,
+     day.`OrderID` AS day_OrderID,
+     day.`Day` AS day_Day,
+     day.`Name` AS day_Name,
+     day.`Price` AS day_Price,
+     day.`Total` AS day_Total
+FROM
+     `day` day]]>
+	</queryString>
+	<field name="day_NO" class="java.lang.Integer"/>
+	<field name="day_OrderID" class="java.lang.String"/>
+	<field name="day_Day" class="java.lang.String"/>
+	<field name="day_Name" class="java.lang.String"/>
+	<field name="day_Price" class="java.lang.String"/>
+	<field name="day_Total" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="78" width="555" height="1" uuid="0c90fc88-8741-4a69-9735-7178f9c858bb"/>
+			</line>
+			<image>
+				<reportElement x="0" y="0" width="94" height="78" uuid="91f4d8bc-6554-4366-b122-f9f1b00c5601"/>
+				<imageExpression><![CDATA["C:\\Users\\asus\\Pictures\\ss-312-304-stainless-steel-pipe-stainless.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="107" y="0" width="100" height="20" uuid="9c16012c-ca6c-4b87-b9e8-4ef35ed7d226"/>
+				<text><![CDATA[STL Creative]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="107" y="20" width="100" height="20" uuid="56b207f8-6c7b-4cd9-b87f-ead5cd747d5c"/>
+				<text><![CDATA[Tel: 081-3266568]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="107" y="40" width="142" height="20" uuid="ebe9f143-a142-412c-bd7c-8072a8710afe"/>
+				<text><![CDATA[Email: Surapon@gmail.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="20" width="162" height="28" uuid="a8e90f8b-0a2e-4471-a14c-3398d52032ed"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[INCOME PER DAY]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="31" width="555" height="30" uuid="1bc4aa32-65d6-4705-9ddf-de41c06276de"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="22" y="31" width="43" height="20" uuid="77a60579-004a-4ee4-851f-7ab0840583f2"/>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="76" y="30" width="45" height="20" uuid="d662bcde-f1d4-46e0-b74c-41edb37bbcc5"/>
+				<text><![CDATA[OrderID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="171" y="31" width="57" height="20" uuid="37541550-75db-488c-baec-0076e05e0c6c"/>
+				<text><![CDATA[Day]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="30" width="45" height="20" uuid="78a1557c-846c-427a-a122-06442692c195"/>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="31" width="35" height="20" uuid="e5870aba-8c90-4685-bc5b-f0740d229625"/>
+				<text><![CDATA[Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="494" y="31" width="30" height="20" uuid="8c504906-426b-4ff4-9224-cb0bf2f35aaf"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="133" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="1" height="125" uuid="d0f48435-4a14-498c-b79d-02c7d01fb3b3"/>
+			</line>
+			<line>
+				<reportElement x="554" y="0" width="1" height="125" uuid="ec8663a8-d662-4eb9-a004-146ad0cdab8c"/>
+			</line>
+			<line>
+				<reportElement x="1" y="124" width="553" height="1" uuid="bd701020-42f9-4724-ac03-511566f9a557"/>
+			</line>
+			<textField>
+				<reportElement x="9" y="17" width="85" height="20" uuid="d30d8a37-b274-4f8a-bc06-2b54b2f2a198"/>
+				<textFieldExpression><![CDATA[$F{day_NO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="76" y="17" width="77" height="20" uuid="1642efe1-c515-476f-b771-4a8a22d4facd"/>
+				<textFieldExpression><![CDATA[$F{day_OrderID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="153" y="17" width="100" height="20" uuid="97c51c01-2c04-4742-85aa-35de0b9a0f70"/>
+				<textFieldExpression><![CDATA[$F{day_Day}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="251" y="17" width="100" height="20" uuid="67cdec7e-35ad-473d-b144-542d1da2aeb1"/>
+				<textFieldExpression><![CDATA[$F{day_Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="377" y="17" width="100" height="20" uuid="e24a0b76-068a-4e40-8931-f8d8fca3dc98"/>
+				<textFieldExpression><![CDATA[$F{day_Price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="494" y="17" width="100" height="20" uuid="a0c6e0f4-4ccb-486d-b633-b28142ec8368"/>
+				<textFieldExpression><![CDATA[$F{day_Total}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="54" y="-30" width="1" height="154" uuid="7dd1b7ea-f14d-4425-a9e3-fa3918714d86"/>
+			</line>
+			<line>
+				<reportElement x="139" y="-30" width="1" height="154" uuid="f0356f1e-3ee7-49f8-b537-5ee95732a64a"/>
+			</line>
+			<line>
+				<reportElement x="228" y="-30" width="1" height="154" uuid="9896df96-67e7-4164-aeb1-a7ea7927f209"/>
+			</line>
+			<line>
+				<reportElement x="477" y="-30" width="1" height="154" uuid="032ce289-aad5-476f-b2c7-00860618dedb"/>
+			</line>
+			<line>
+				<reportElement x="351" y="-30" width="1" height="154" uuid="9805c021-b7b0-480f-832b-4ff73d3d2d90"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="455" y="20" width="100" height="20" uuid="6ee6be43-fd57-47e3-80a1-450fc9be357a"/>
+				<text><![CDATA[Tel: 081-3266568]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="ea78cf15-941d-4cf7-9a9e-e270f94d8d9f"/>
+				<text><![CDATA[STL Creative]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

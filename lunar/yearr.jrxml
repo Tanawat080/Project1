@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="yearr" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7bd10268-a415-4206-b7a9-45462e06c035">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="144"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     yearr.`No` AS yearr_No,
+     yearr.`Product` AS yearr_Product,
+     yearr.`Year` AS yearr_Year,
+     yearr.`Total` AS yearr_Total
+FROM
+     `yearr` yearr]]>
+	</queryString>
+	<field name="yearr_No" class="java.lang.Integer"/>
+	<field name="yearr_Product" class="java.lang.String"/>
+	<field name="yearr_Year" class="java.lang.String"/>
+	<field name="yearr_Total" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="82" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="81" width="555" height="1" uuid="63345995-4c62-475e-b742-c6371c214a9d"/>
+			</line>
+			<image>
+				<reportElement x="1" y="0" width="81" height="77" uuid="bf0c4d5a-547f-4d67-8a1b-2dde4ad61d8f"/>
+				<imageExpression><![CDATA["C:\\Users\\asus\\Pictures\\ss-312-304-stainless-steel-pipe-stainless.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="82" y="0" width="100" height="20" uuid="835a611e-894e-474b-bbb5-244b637a39fb"/>
+				<text><![CDATA[STL Creative]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="82" y="20" width="100" height="20" uuid="f67c0494-7abd-49f1-824d-b54f74c0a40b"/>
+				<text><![CDATA[Tel: 081-3266568]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="82" y="40" width="146" height="20" uuid="2270ea86-c545-4d61-b533-832ff00b2cc4"/>
+				<text><![CDATA[Email: Surapon@gmail.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="386" y="13" width="169" height="27" uuid="5069969f-a121-4e1e-9442-b779415668b0"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[INCOME PER YEAR]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="31" width="555" height="30" uuid="49c0baae-ed6a-4775-aa18-d733dad11fcd"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="22" y="31" width="15" height="20" uuid="327e4fc6-00ab-4724-80ee-ccdb0ec83f4c"/>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="159" y="31" width="100" height="20" uuid="ae9b00ac-56e9-42e6-8739-8198ac09c3f6"/>
+				<text><![CDATA[Product]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="31" width="50" height="20" uuid="0ffbdf11-5f65-4a82-b55d-b33652f894e5"/>
+				<text><![CDATA[Year]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="510" y="31" width="25" height="20" uuid="707c3c84-9d3b-4e42-8014-49e907490f20"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="136" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="1" height="125" uuid="e3dacd69-ec31-434e-82c6-5a8baafec894"/>
+			</line>
+			<line>
+				<reportElement x="52" y="-30" width="1" height="155" uuid="c802ffb4-6ed5-4027-9cb4-0bd2828f3d43"/>
+			</line>
+			<line>
+				<reportElement x="554" y="0" width="1" height="125" uuid="75f3435a-147b-4445-9b34-8ee31128d340"/>
+			</line>
+			<line>
+				<reportElement x="344" y="-30" width="1" height="155" uuid="273988d1-33f6-4588-a132-ccecf803b611"/>
+			</line>
+			<line>
+				<reportElement x="476" y="-30" width="1" height="155" uuid="e0da2722-9d3a-49e5-9170-50e64d571a94"/>
+			</line>
+			<line>
+				<reportElement x="1" y="125" width="553" height="1" uuid="fdeb1266-58b3-49e9-8041-682ea04e3ca8"/>
+			</line>
+			<textField>
+				<reportElement x="22" y="24" width="100" height="20" uuid="f2412ff4-2771-42cc-b7ab-e19bf65d7815"/>
+				<textFieldExpression><![CDATA[$F{yearr_No}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="75" y="44" width="269" height="72" uuid="ca0d3bf0-85fe-4d42-8f42-e7dfed6d728e"/>
+				<textFieldExpression><![CDATA[$F{yearr_Product}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="376" y="24" width="100" height="20" uuid="e3cfccb5-68c9-4bf8-9c19-77e57201ca35"/>
+				<textFieldExpression><![CDATA[$F{yearr_Year}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="493" y="24" width="100" height="20" uuid="ec16120d-e9ee-4387-8804-50e667bccd9a"/>
+				<textFieldExpression><![CDATA[$F{yearr_Total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="452" y="5" width="100" height="20" uuid="591830e2-054d-45e3-a37c-432341406eeb"/>
+				<text><![CDATA[STL Creative]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="452" y="25" width="100" height="20" uuid="73886476-2ffa-46a2-bf7a-b1bdfebde577"/>
+				<text><![CDATA[Tel: 081-3266568]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
