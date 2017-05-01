@@ -1,0 +1,44 @@
+body {
+  margin: auto;
+  padding-left: 0em;
+  padding-top: 0em;
+  background-color: #DCDCDC;
+}
+shakeimage{position:relative}
+      h1.square{
+         list-style-type: none;
+         font-family: Georgia, "TH SarabunPSK", serif;
+         padding: 0.5em;
+         margin: 0.1em;
+         width: 31em;
+         background: #BEBEBE;
+         margin: 0.1em 0;
+         padding: 0.1em;
+
+       }
+     a:link {
+         color: black
+     }
+     a:hover {
+       color: #BEBEBE
+     }
+
+     div.figure {
+       float: left;
+       width: 17%;
+       border: thin silver solid;
+       margin: 0.5em;
+       padding: 0.5em;
+       position:relative;
+       top:0px;
+       right:0px;
+     }
+     div.figure a {
+       text-decoration: none;
+       font-family: Georgia, "TH SarabunPSK", serif;
+       color: black;
+       font-size: 200%;
+       font-style: italic;
+       font-size: smaller;
+       text-indent: 0;
+     }
