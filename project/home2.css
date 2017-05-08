@@ -1,0 +1,67 @@
+body {
+  margin: auto;
+  padding-left: 0em;
+  padding-top: 0em;
+  background-color: #DCDCDC;
+}
+shakeimage{position:relative}
+      h1.square{
+         list-style-type: none;
+         font-family: Georgia, "TH SarabunPSK", serif;
+         padding: 0.5em;
+         margin: 0.1em;
+         width: 100em;
+         background: #BEBEBE;
+         margin: 0.1em 0;
+         padding: 0.1em;
+
+       }
+
+    ul.navbar {
+       list-style-type: none;
+       padding: 0.5em;
+       margin: 0.1em;
+       position: absolute;
+       top: 10em;
+       left: 3em;
+       width: 15em
+     }
+    ul.navbar li {
+      list-style-type: none;
+       background: white;
+       margin: 0.1em 0;
+       padding: 0.1em;
+       border-left: 0.5em solid #BEBEBE;
+       font-family: Georgia, "TH SarabunPSK", serif;
+       font-size: 200%;
+
+     }
+     ul.navbar a {
+         text-decoration: none
+     }
+     a:link {
+         color: black
+     }
+     a:hover {
+       color: #0000
+     }
+
+     div.figure {
+       float: left;
+       width: 17%;
+       border: thin silver solid;
+       margin: 0.5em;
+       padding: 0.5em;
+       position:relative;
+       top:40px;
+       left:-80px;
+     }
+     div.figure a {
+       text-decoration: none;
+       font-family: Georgia, "TH SarabunPSK", serif;
+       color: black;
+       font-size: 100%;
+       font-style: italic;
+       font-size: smaller;
+       text-indent: 0;
+     }
