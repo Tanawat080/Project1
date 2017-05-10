@@ -142,32 +142,55 @@ p{
 
 <div class="container">
 <body>
+  <SCRIPT Language="JavaScript">
 
-	<br>  &nbsp;&nbsp;&nbsp; <label for="idPD">เลือกประเภทสินค้า : </label>
+  function startCalc(){
+  interval = setInterval("calc()",1);
+  }
+  function calc(){
+  one = document.FrmCal.width.value;
+  two = document.FrmCal.height.value;
+  price=document.FrmCal.price.value;
+  document.FrmCal.gap.value = two*price *one;
+  }
+  function stopCalc(){
+  clearInterval(interval);
+  }
 
-				 <?php
-      include ('testdb.php');
-					 $strSQL = mysqli_query($mysqli,"SELECT * FROM type");
-							 while($objResult = mysqli_fetch_array($strSQL)){
-				 ?>
-				 <center>
-					<form name="<?php echo $objResult["type_ID"];?>" method="post" action="doorr.php">
-					 <input type= "hidden" name="type_ID" value="<?php echo $objResult["type_ID"];?>">
-						<div class="figure">
-							<!--<a href="type<?php echo $objResult["type_ID"];?>.php"> -->
-								<img src="img/<?php echo $objResult["type_IMG"];?>" width="20"  height="20"/><br>
-								<br><input  type = "submit" name = "submit" value="<?php echo $objResult["type_Name"];?>" >
-							</a>
-						</div>
-				 </center>
-</form>
-		<?php
-		}
-		?>
-  </div>
+  </SCRIPT>
+<form name="FrmCal" method="post" >
+  <?php
+  $mysqli = mysqli_connect("localhost", "root", "", "stl");
+  $mysqli->set_charset("utf8");
+
+  $a= $_POST["type_ID"];
+
+  echo '<input type="hidden" name="type_ID" value="'.$a.'">'."\n";
+  $strSQL = mysqli_query($mysqli,"SELECT * FROM product,type where product.type_ID=type.type_ID and product.type_ID= $a");
 
 
-  </div>
+    while($objResult = mysqli_fetch_array($strSQL)){?>
+
+
+        <div class="figure">
+          <input type="hidden" name="type_ID" value="<?php echo $a;?>">
+          <input type="hidden" name="product_ID" value="<?php echo $objResult["product_ID"];?>">
+            <font face="TH SarabunPSK" color="green" size="4"><B><?php echo $objResult["product_Name"];?></B></font>
+            <center><a href="pic/<?php echo $objResult["product_IMG"];?>"rel="lightbox[food]"><img src="pic/<?php echo $objResult["product_IMG"];?>" width="140" height="110" border="0" /></a></center>
+           <font face="TH SarabunPSK" color="green" size="4">
+             <?php echo iconv_substr($objResult["Description"],0,30, "UTF-8")."...";?>
+
+
+          </font>
+
+           <center><button class="button button4" type="button" onClick="this.form.action='check.php?product_ID=<?php echo $objResult["product_ID"];?>'; submit()"><font face = "TH SarabunPSK" >เช็คราคา</font></button>
+           </center>
+
+      </div>
+  <?php } ?>
+  </form>
+
+
 
 </body>
 </html>

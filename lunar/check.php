@@ -13,7 +13,32 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-
+<script>
+$.urlParam = function(name){
+     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+     return results[1] || 0;
+ }
+function showUser(str) {
+  if (str=="") {
+    document.getElementById("txtHint").innerHTML="";
+    return;
+  }
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("txtHint").innerHTML=this.responseText;
+    }
+  }
+  var a = $.urlParam("product_ID");
+  xmlhttp.open("GET","checkprice.php?q="+str+"&product_id="+a,true);
+  xmlhttp.send();
+}
+</script>
 
 </head>
 <body>
@@ -79,13 +104,24 @@ p{
             div.abcd{
               font-family: "TH SarabunPSK";
               font-size: 20px;
-            }
+            } h1,h2,h3,h4,h5{
+                font-family: "TH SarabunPSK";
+              }option{
+                font-family: "TH SarabunPSK";
+                font-size: 18px;
+                  color: #000000;
+              }div.container.button{
+                font-family: "TH SarabunPSK";
+                font-size: 18px;
+                  color: #000000;
+              }
 
 
 
 </style>
 <body>
-
+<?php $a=$_GET["product_ID"]; ?>
+<input type="hidden" name="a" value="<?php echo $a;?>">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
 
@@ -142,32 +178,38 @@ p{
 
 <div class="container">
 <body>
+<form  method="post" action="testcart.php?p_id=<?php echo $_GET["product_ID"];?>&&act=add">
 
-	<br>  &nbsp;&nbsp;&nbsp; <label for="idPD">เลือกประเภทสินค้า : </label>
 
-				 <?php
-      include ('testdb.php');
-					 $strSQL = mysqli_query($mysqli,"SELECT * FROM type");
-							 while($objResult = mysqli_fetch_array($strSQL)){
-				 ?>
-				 <center>
-					<form name="<?php echo $objResult["type_ID"];?>" method="post" action="doorr.php">
-					 <input type= "hidden" name="type_ID" value="<?php echo $objResult["type_ID"];?>">
-						<div class="figure">
-							<!--<a href="type<?php echo $objResult["type_ID"];?>.php"> -->
-								<img src="img/<?php echo $objResult["type_IMG"];?>" width="20"  height="20"/><br>
-								<br><input  type = "submit" name = "submit" value="<?php echo $objResult["type_Name"];?>" >
-							</a>
-						</div>
-				 </center>
+
+<center><h1>เช็คราคา</h1></center>
+
+<?php
+
+$mysqli = mysqli_connect("localhost", "root", "", "stl");
+$mysqli->set_charset("utf8");
+
+$a= $_POST["type_ID"];
+$strSQL = mysqli_query($mysqli,"SELECT * FROM scale,type where scale.type_ID=type.type_ID and scale.type_ID= $a");
+?>
+<div class="container">
+    <div class="form-group">
+      <label for="sel1">เลือกขนาด:</label>
+      <select class="form-control" name="scale" onchange="showUser(this.value)">
+        <?php while($objResult = mysqli_fetch_array($strSQL)){ ?>
+        <option value="<?php echo $objResult["scale_id"]; ?>"><font size="4"><?php echo"กว้าง "; echo $objResult["width"]; echo" เมตร"; echo"    ยาว "; echo $objResult["height"];  echo" เมตร";?></font></option>
+        <?php } ?>
+      </select>
+    </div>
+    <div id="txtHint"></div>
+<button type="submit" class="btn btn-default" ><font size="4.5">เพิ่มสินค้าลงในตะกร้า</font></button>
+</div>
+
+
+
+<!-- คั่นกลางงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงงง -->
+
+
 </form>
-		<?php
-		}
-		?>
-  </div>
-
-
-  </div>
-
 </body>
 </html>

@@ -1,4 +1,11 @@
+<?php session_start();?>
+<?php
 
+if (!$_SESSION["IdNo"]){  //check session
+
+	  Header("Location: form_login.php"); //ไม่พบผู้ใช้กระโดดกลับไปหน้า login form
+
+}else{?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +20,29 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+<script>
+
+function showUser(str) {
+  if (str=="") {
+    document.getElementById("txtHint").innerHTML="";
+    return;
+  }
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("txtHint").innerHTML=this.responseText;
+    }
+  }
+
+  xmlhttp.open("GET","showselfdesign.php?q="+str,true);
+  xmlhttp.send();
+}
+</script>
 
 
 </head>
@@ -38,8 +68,6 @@ div{
 }
 h2{
   font-family: "TH SarabunPSK";
-  font-size: 20px;
-
 }
 p{
   font-family: "TH SarabunPSK";
@@ -79,12 +107,23 @@ p{
             div.abcd{
               font-family: "TH SarabunPSK";
               font-size: 20px;
-            }
+            } h1,h2,h3,h4,h5{
+                font-family: "TH SarabunPSK";
+              }option{
+                font-family: "TH SarabunPSK";
+                font-size: 18px;
+                  color: #000000;
+              }div.container.button{
+                font-family: "TH SarabunPSK";
+                font-size: 18px;
+                  color: #000000;
+              }
 
 
 
 </style>
 <body>
+
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -142,32 +181,50 @@ p{
 
 <div class="container">
 <body>
+<form  method="post" action="a.php"><center>
+<?php
+include ("testdb.php");
 
-	<br>  &nbsp;&nbsp;&nbsp; <label for="idPD">เลือกประเภทสินค้า : </label>
+$strSQL1=mysqli_query($mysqli,"select * from customer where identification_No='".$_SESSION['IdNo']."'");
+$objResult1 = mysqli_fetch_array($strSQL1);
+$strSQL2=mysqli_query($mysqli,"select * from improve where customer_ID='".$objResult1['customer_ID']."'");
+$strSQLT=mysqli_query($mysqli,"select * from improve where customer_ID='".$objResult1['customer_ID']."'");
 
-				 <?php
-      include ('testdb.php');
-					 $strSQL = mysqli_query($mysqli,"SELECT * FROM type");
-							 while($objResult = mysqli_fetch_array($strSQL)){
-				 ?>
-				 <center>
-					<form name="<?php echo $objResult["type_ID"];?>" method="post" action="doorr.php">
-					 <input type= "hidden" name="type_ID" value="<?php echo $objResult["type_ID"];?>">
-						<div class="figure">
-							<!--<a href="type<?php echo $objResult["type_ID"];?>.php"> -->
-								<img src="img/<?php echo $objResult["type_IMG"];?>" width="20"  height="20"/><br>
-								<br><input  type = "submit" name = "submit" value="<?php echo $objResult["type_Name"];?>" >
-							</a>
-						</div>
-				 </center>
+$resultis= mysqli_fetch_array($strSQLT);
+if (isset($resultis)) {
+
+?>
+
+            <div class="form-group">
+              <label for="sel1">เลือกสินค้าของท่าน :</label>
+              <select class="form-control" name="scale" onchange="showUser(this.value)">
+
+                  <?php while($objResult2 = mysqli_fetch_array($strSQL2)){
+                      $strSQL3=mysqli_query($mysqli,"select * from type where type_ID='".$objResult2['type_ID']."'");
+                      while($objResult3 = mysqli_fetch_array($strSQL3)){
+                    ?>
+                <option value="<?php echo $objResult2["improve_ID"]; ?>"><font size="4"><?php echo"รหัสการตรวจสอบ : "; echo $objResult2['improve_ID']; echo " , ประเภท :"; echo $objResult3['type_Name'];?></font></option>
+                <?php } }?>
+              </select>
+            </div>
+<?php }else {
+  echo "ไม่มีรายการสินค้าที่คุณออกแบบด้วยตนเอง";
+}
+
+
+?>
+            <div id="txtHint"></div>
+
+<?php?>
+
+
+
+
+
+
+
+
 </form>
-		<?php
-		}
-		?>
-  </div>
-
-
-  </div>
-
 </body>
 </html>
+<?php }?>

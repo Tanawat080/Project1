@@ -150,10 +150,12 @@
     </SCRIPT>
 
 
-    <form name="autoSumForm" method="post" action="calculate1.php?product_ID=<?php echo $_GET["product_ID"];?>" >
+    <form name="autoSumForm" method="post" action="testcart.php?p_id=<?php echo $_GET["product_ID"];?>&&act=add">
 
 
         <?php
+
+
           $mysqli = mysqli_connect("localhost", "root", "", "stl");
           $mysqli->set_charset("utf8");
 
@@ -180,11 +182,11 @@
                   <input type="hidden"  class="form-control" name="price" value="<?=$objResult['Price'];?>">
                   <label for="form-control">&nbsp;&nbsp;เมตร</label><br>
                   <label for="fname">ราคาต่อ 1 ชิ้น</label><br>
-                  <input class="form-control" type=text name="gap">
+                  <input class="form-control" type=text name="gap" disabled="disabled">
                 </div>
 
                   <button class="button button4" type="submit" ><font face = "TH SarabunPSK" >เลือก</font></button>
-                </div>
+                      </div>
               </center>
     </form>
 
