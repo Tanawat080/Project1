@@ -4,7 +4,7 @@
 <head>
   <title>Bootstrap Case</title>
   <meta charset="utf-8">
-    <link href="home2.css" rel="stylesheet" >
+    <link href="h.css" rel="stylesheet" >
   <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -151,11 +151,11 @@ p{
 							 while($objResult = mysqli_fetch_array($strSQL)){
 				 ?>
 				 <center>
-					<form name="<?php echo $objResult["type_ID"];?>" method="post" action="door.php">
+					<form name="<?php echo $objResult["type_ID"];?>" method="post" action="doorr.php">
 					 <input type= "hidden" name="type_ID" value="<?php echo $objResult["type_ID"];?>">
 						<div class="figure">
 							<!--<a href="type<?php echo $objResult["type_ID"];?>.php"> -->
-								<img src="img/<?php echo $objResult["type_IMG"];?>"><br>
+								<img src="img/<?php echo $objResult["type_IMG"];?>" width="20"  height="20"/><br>
 								<br><input  type = "submit" name = "submit" value="<?php echo $objResult["type_Name"];?>" >
 							</a>
 						</div>
@@ -164,7 +164,10 @@ p{
 		<?php
 		}
 		?>
+  </div>
+
+
+  </div>
 
 </body>
-</div>
 </html>

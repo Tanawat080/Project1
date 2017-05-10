@@ -2,62 +2,52 @@
     error_reporting( error_reporting() & ~E_NOTICE );
     session_start();
     $p_id = $_REQUEST['p_id'];
-	$act = $_REQUEST['act'];
+  	$act = $_REQUEST['act'];
+    $s=$_POST["scale"];
   if (!$_SESSION["IdNo"]){
 
   	  Header("Location: form_login.php");
 
   }else{
 
-	if($act=='add' && !empty($p_id))
-	{
-		if(!isset($_SESSION['shopping_cart']))
-		{
+    if($act=='add' && !empty($p_id))
+  	{
+  		if(!isset($_SESSION['shopping_cart']))
+  		{
 
-			$_SESSION['shopping_cart']=array();
-      $_SESSION['w']=array();
-      $_SESSION['h']=array();
+  			$_SESSION['shopping_cart']=array();
+  		}else{
 
-		}else{
+  		}
+      #----------------------------------------------------------
+  		if(isset($_SESSION['shopping_cart'][$p_id]) && in_array("'.$s.'",$_SESSION['shopping_cart'][1],true)) ##เช็คค่า id มีอยู่ไหม
+  		{
 
-		}
-		if(isset($_SESSION['shopping_cart'][$p_id]))
-		{
-			$_SESSION['shopping_cart'][$p_id]++;
-		}
-		else
-		{
-			$_SESSION['shopping_cart'][$p_id]=1;
-		}
-	}
+              $_SESSION['shopping_cart'][$p_id][0]++;
 
-	if($act=='remove' && !empty($p_id))  //ยกเลิกการสั่งซื้อ
-	{
-		unset($_SESSION['shopping_cart'][$p_id]);
-	}
+      }else{
+  			   $_SESSION['shopping_cart'][$p_id]=array(1,$s);
+           #$_SESSION['shopping_cart'][$p_id][0]++;
+  		}
 
-	if($act=='update')
-	{
-		$amount_array = $_POST['amount'];
-		foreach($amount_array as $p_id=>$amount)
-		{
-			$_SESSION['shopping_cart'][$p_id]=$amount;
-		}
+  	}
 
-    $width_array = $_POST['width'];
-    foreach ($width_array as $p_id => $width) {
-      $_SESSION['w'][$p_id]=$width;
-    }
+  	if($act=='remove' && !empty($p_id))  //ยกเลิกการสั่งซื้อ
+  	{
+  		unset($_SESSION['shopping_cart'][$p_id]);
+  	}
 
-    $height_array = $_POST['height'];
-    foreach ($height_array as $p_id => $height) {
-      $_SESSION['h'][$p_id]=$height;
-    }
-
-	}
-  if($act=='Cancel-Cart'){
-		unset($_SESSION['shopping_cart']);
-	}
+    if($act=='Cancel-Cart'){
+    		unset($_SESSION['shopping_cart']);
+    	}
+  	if($act=='update')
+  	{
+  		$amount_array = $_POST['amount'];
+  		foreach($amount_array as $p_id=>$amount)
+  		{
+  			$_SESSION['shopping_cart'][$p_id][0]=$amount;
+  		}
+  	}
 	?>
 
 <!DOCTYPE html>
@@ -148,6 +138,9 @@
 
 <body>
 
+
+
+
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
 
@@ -222,20 +215,19 @@
 if(!empty($_SESSION['shopping_cart']))
 {
   include ('testdb.php');
-  $_SESSION['h'] = $_POST['height'];
-  $_SESSION['w'] = $_POST['width'];
-  $_SESSION['gap'] = $_POST['gap'];
 
-	foreach($_SESSION['shopping_cart'] as $p_id=>$p_qt,$_SESSION['w'] as $p_id=>$p_qty1,$_SESSION['h'] as $p_id=>$p_qty2){
+	foreach($_SESSION['shopping_cart'] as $p_id=>$p_detail ){
 
     $strSQL = mysqli_query($mysqli,"SELECT * FROM product WHERE product_ID='".$p_id."';");
-
-
+    $strSQL1 = mysqli_query($mysqli,"SELECT * FROM scale WHERE scale_id='".$p_detail[1]."';");
+    $row1 = mysqli_fetch_array($strSQL1);
+    //echo "SELECT * FROM scale WHERE scale_id='".$sa."'";
 		while($row = mysqli_fetch_array($strSQL))
 		{
-      $sum=$row['Price'] * $p_qty;
+      $sum=$row['Price'] * $p_detail[0]*$row1['width']*$row1['height'];
 
 		$total += $sum;
+
 		echo "<tr>";
 		echo "<td align='center'>";
         echo $i += 1;
@@ -246,24 +238,23 @@ if(!empty($_SESSION['shopping_cart']))
 
 
 ?>
-<td width='57' align='right'> <input type='text' class="form-control" name='width[<?=$p_id?>]' value='<?=$p_qty1?>'/> </td>
-<input type="hidden"  class="form-control" name="price" value="<?=$row['Price'];?>">
-<td width='57' align='right'> <input type='text' class="form-control" name='height[<?=$p_id?>]' value='<?=$p_qty2?>'/> </td>
+<td width='57' align='right'> <?php echo $row1['width'];?> </td>
+<td width='57' align='right'> <?php echo $row1['height'];?> </td>
 <?php
 		echo "<td width='100' align='center'>".number_format($row['Price'],2). "</td>";
 ?>
-		<td width='57' align='right'><input type='text' class="form-control" name='amount[<?=$p_id?>]' value='<?=$p_qty?>'/></td>
+		<td width='57' align='right'><input type='text' class="form-control" name='amount[<?=$p_id?>]' value='<?=$p_detail[0]?>'/></td>
 
-<td width='100' align='right'> <?php echo number_format($row['Price']*$p_qty,2); ?> </td>
+<td width='100' align='right'> <?php echo number_format($row['Price']*$p_detail[0]*$row1['width']*$row1['height'],2); ?> </td>
 <?php
 
 		echo "<td width='100' align='center'><a href='testcart.php?p_id=$p_id&act=remove' class='btn btn-danger btn-xs'>ลบ</a></td>";
 
 		echo "</tr>";
 		}
+ #foreach ที่สอง
+	} #foreach1
 
-	}
-}}
 	echo "<tr>";
   	echo "<td colspan='7' bgcolor='#CEE7FF' align='right'>Total</td>";
   	echo "<td align='right' bgcolor='#CEE7FF'>";

@@ -199,8 +199,8 @@ Licence URI: http://www.os-templates.com/template-terms
         <h4 class="font-x1 uppercase"><a href="format_1.php">รูปแบบสำเร็จรูป</a></h4>
         <p>มีรูปแบบที่มากมาย และหลายหลายให้คุณได้เลือกสรร</p>
       </article>
-      <article class="one_quarter"><i class="fa fa-3x fa-user btmspace-30"></i>
-        <h4 class="font-x1 uppercase"><a href="design.php">ออกแบบด้วยตนเอง</a></h4>
+      <article class="one_quarter"><i class="fa fa-3x fa-paint-brush btmspace-30"></i>
+        <h4 class="font-x1 uppercase"><a href="menudesign.php">ออกแบบด้วยตนเอง</a></h4>
         <p>มีบริการสำหรับลูกค้าที่ต้องการออกแบบได้ด้วยตัวเอง</p>
       </article>
       <article class="one_quarter"><i class="fa fa-3x fa-credit-card btmspace-30"></i>
@@ -208,8 +208,16 @@ Licence URI: http://www.os-templates.com/template-terms
         <p>ชำระเงินโอนผ่านธนาคารกสิกรไทย และธนาคารกรุงเทพ</p>
       </article>
       <article class="one_quarter"><i class="fa fa-3x fa-check-square-o btmspace-30"></i>
-        <h4 class="font-x1 uppercase"><a href="checkstatus.php">เช็คสถานะ</a></h4>
-        <p>ตรวจสอบสถานะของลูกค้าในปัจจุบัน</p>
+        <h4 class="font-x1 uppercase"><a href="checkstatus.php">เช็คสถานะ สินค้าสำเร็จรูป</a></h4>
+        <p>ตรวจสอบสถานะของลูกค้า ที่ทำการสั่งสินค้าแล้ว</p>
+      </article><br>
+      <article class="one_quarter first"><i class="fa fa-3x fa-upload btmspace-30"></i>
+        <h4 class="font-x1 uppercase"><a href="upfile.php">อัพโหลดไฟล์</a></h4>
+        <p>อัพโหลดไฟล์ สำหรับลูกค้าที่ออกแบบด้วยตนเอง</p>
+      </article>
+      <article class="one_quarter"><i class="fa fa-3x fa-check-circle-o btmspace-30"></i>
+        <h4 class="font-x1 uppercase"><a href="menudesign.php">เช็คการตรวจสอบ</a></h4>
+        <p>ตรวจสอบสถานะการตรวจสอบราคา สำหรับสินค้าที่ออกแบบด้วยตนเอง</p>
       </article>
     </div>
     <!-- ################################################################################################ -->

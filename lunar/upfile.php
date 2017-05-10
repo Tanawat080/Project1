@@ -1,4 +1,11 @@
+<?php session_start();?>
+<?php
 
+if (!$_SESSION["IdNo"]){  //check session
+
+	  Header("Location: form_login.php"); //ไม่พบผู้ใช้กระโดดกลับไปหน้า login form
+
+}else{?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +19,35 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-
+<script>
+$.urlParam = function(name){
+     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+     return results[1] || 0;
+ }
+function showUser(str) {
+  if (str=="") {
+    document.getElementById("txtHint").innerHTML="";
+    return;
+  }
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("txtHint").innerHTML=this.responseText;
+    }
+  }
+  var a = $.urlParam("product_ID");
+  xmlhttp.open("GET","checkprice.php?q="+str+"&product_id="+a,true);
+  xmlhttp.send();
+}
+</script>
 
 </head>
 <body>
@@ -54,7 +88,7 @@ p{
               text-align: center;
               text-decoration: none;
               display: inline-block;
-              font-size: 20px;
+              font-size: 18px;
               font-family: "TH SarabunPSK";
               margin: 4px 2px;
               cursor: pointer;
@@ -75,16 +109,44 @@ p{
             label{
               font-family: "TH SarabunPSK";
               font-size: 20px;
+
             }
             div.abcd{
               font-family: "TH SarabunPSK";
               font-size: 20px;
-            }
+            } h1,h2,h3,h4,h5{
+                font-family: "TH SarabunPSK";
+              }option{
+                font-family: "TH SarabunPSK";
+                font-size: 18px;
+                  color: #000000;
+              }div.container.button{
+                font-family: "TH SarabunPSK";
+                font-size: 18px;
+                  color: #000000;
+              }.container input{
+              	font-family: "TH SarabunPSK";
+              font-size: 20px;
+              }input, select {
+    font-size: 12px;
+    padding: 2px;
+}
+input:required {
+    border: 2px inset #F0E68C;
+}
+input[type='date'] {
+    height: 16px;
+}
+input[type='range'] {
+    position: relative;
+    bottom: -5px;
+}
 
 
 
 </style>
 <body>
+
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -140,57 +202,43 @@ p{
     <!-- ################################################################################################ -->
   </header>
 
-<div class="container">
+<div class="container" >
 <body>
-  <SCRIPT Language="JavaScript">
+<form  method="post" action="designSubmit.php" enctype="multipart/form-data"><center>
 
-  function startCalc(){
-  interval = setInterval("calc()",1);
-  }
-  function calc(){
-  one = document.FrmCal.width.value;
-  two = document.FrmCal.height.value;
-  price=document.FrmCal.price.value;
-  document.FrmCal.gap.value = two*price *one;
-  }
-  function stopCalc(){
-  clearInterval(interval);
-  }
+<h1> อัพโหลดรูปภาพสำหรับ การออกแบบด้วยตัวเอง </h1>
+    <label for="idPD">เลือกประเภท : </label><div class="form">
+      <select name="type">
+        <option value="">เลือกประเภท</option>
+          <?php
+            include ("testdb.php");
+            $strSQL = mysqli_query($mysqli,"SELECT * FROM type");
 
-  </SCRIPT>
-<form name="FrmCal" method="post" >
-  <?php
-  $mysqli = mysqli_connect("localhost", "root", "", "stl");
-  $mysqli->set_charset("utf8");
+                while($objResult = mysqli_fetch_array($strSQL)){
+          ?>
+        <option value="<?php echo $objResult["type_ID"];?>"><?php echo $objResult["type_Name"]; ?></option>
 
-  $a= $_POST["type_ID"];
-
-  echo '<input type="hidden" name="type_ID" value="'.$a.'">'."\n";
-  $strSQL = mysqli_query($mysqli,"SELECT * FROM product,type where product.type_ID=type.type_ID and product.type_ID= $a");
+     <?php
+     }
+     ?>
+     </select>
 
 
-    while($objResult = mysqli_fetch_array($strSQL)){?>
+  <div class="form-group">
+      <font><label for="des">ขนาด : </label></font>
+      <input type="text" class="form-control"  name="scale_w" style="width:200px"; placeholder="ขนาดความกว้าง">
+      <input type="text" class="form-control"  name="scale_h" style="width:200px"; placeholder="ขนาดความยาว"> </div>
+        <label for="des">รายละเอียดเพิ่มเติม : </label>
+        <font ><textarea class="form-control" rows="5"  style="width:300px"; name="description" placeholder="รายละเอียดเพิ่มเติม"></textarea></font>
+        <font color="red" ><label for="des">** กรุณาระบุรายละเอียดอย่างชัดเจน ** </label></font>
+        <br><label for="des">เลือกรูป : </label>
+        <input type="file" class="form-control" id="fileUpload1" name="fileUpload1" style="width:300px";  ><br>
+        <button class="button" type="submit">ตกลง</button></center>
+</center>
 
 
-        <div class="figure">
-          <input type="hidden" name="type_ID" value="<?php echo $a;?>">
-          <input type="hidden" name="product_ID" value="<?php echo $objResult["product_ID"];?>">
-            <font face="TH SarabunPSK" color="green" size="4"><B><?php echo $objResult["product_Name"];?></B></font>
-            <center><a href="pic/<?php echo $objResult["product_IMG"];?>"rel="lightbox[food]"><img src="pic/<?php echo $objResult["product_IMG"];?>" width="140" height="110" border="0" /></a></center>
-           <font face="TH SarabunPSK" color="green" size="4">
-             <?php echo iconv_substr($objResult["Description"],0,30, "UTF-8")."...";?>
-
-
-          </font>
-
-           <center><button class="button button4" type="button" onClick="this.form.action='check.php?product_ID=<?php echo $objResult["product_ID"];?>'; submit()"><font face = "TH SarabunPSK" >เช็คราคา</font></button>
-           </center>
-
-      </div>
-  <?php } ?>
-  </form>
-
-
-
+</form>
+  </div>
 </body>
 </html>
+<?php }?>

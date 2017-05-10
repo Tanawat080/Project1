@@ -1,4 +1,11 @@
+<?php session_start();?>
+<?php
 
+if (!$_SESSION["IdNo"]){  //check session
+
+	  Header("Location: form_login.php"); //ไม่พบผู้ใช้กระโดดกลับไปหน้า login form
+
+}else{?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +20,29 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+<script>
+
+function showUser(str) {
+  if (str=="") {
+    document.getElementById("txtHint").innerHTML="";
+    return;
+  }
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("txtHint").innerHTML=this.responseText;
+    }
+  }
+
+  xmlhttp.open("GET","showselfdesign.php?q="+str,true);
+  xmlhttp.send();
+}
+</script>
 
 
 </head>
@@ -38,8 +68,6 @@ div{
 }
 h2{
   font-family: "TH SarabunPSK";
-  font-size: 20px;
-
 }
 p{
   font-family: "TH SarabunPSK";
@@ -79,12 +107,23 @@ p{
             div.abcd{
               font-family: "TH SarabunPSK";
               font-size: 20px;
-            }
+            } h1,h2,h3,h4,h5{
+                font-family: "TH SarabunPSK";
+              }option{
+                font-family: "TH SarabunPSK";
+                font-size: 18px;
+                  color: #000000;
+              }div.container.button{
+                font-family: "TH SarabunPSK";
+                font-size: 18px;
+                  color: #000000;
+              }
 
 
 
 </style>
 <body>
+
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -142,55 +181,50 @@ p{
 
 <div class="container">
 <body>
-  <SCRIPT Language="JavaScript">
+<form  method="post" action="a.php"><center>
+<?php
+include ("testdb.php");
 
-  function startCalc(){
-  interval = setInterval("calc()",1);
-  }
-  function calc(){
-  one = document.FrmCal.width.value;
-  two = document.FrmCal.height.value;
-  price=document.FrmCal.price.value;
-  document.FrmCal.gap.value = two*price *one;
-  }
-  function stopCalc(){
-  clearInterval(interval);
-  }
+$strSQL1=mysqli_query($mysqli,"select * from customer where identification_No='".$_SESSION['IdNo']."'");
+$objResult1 = mysqli_fetch_array($strSQL1);
+$strSQL2=mysqli_query($mysqli,"select * from improve where customer_ID='".$objResult1['customer_ID']."'");
+$strSQLT=mysqli_query($mysqli,"select * from improve where customer_ID='".$objResult1['customer_ID']."'");
 
-  </SCRIPT>
-<form name="FrmCal" method="post" >
-  <?php
-  $mysqli = mysqli_connect("localhost", "root", "", "stl");
-  $mysqli->set_charset("utf8");
+$resultis= mysqli_fetch_array($strSQLT);
+if (isset($resultis)) {
 
-  $a= $_POST["type_ID"];
+?>
 
-  echo '<input type="hidden" name="type_ID" value="'.$a.'">'."\n";
-  $strSQL = mysqli_query($mysqli,"SELECT * FROM product,type where product.type_ID=type.type_ID and product.type_ID= $a");
+            <div class="form-group">
+              <label for="sel1">เลือกสินค้าของท่าน :</label>
+              <select class="form-control" name="scale" onchange="showUser(this.value)">
 
-
-    while($objResult = mysqli_fetch_array($strSQL)){?>
-
-
-        <div class="figure">
-          <input type="hidden" name="type_ID" value="<?php echo $a;?>">
-          <input type="hidden" name="product_ID" value="<?php echo $objResult["product_ID"];?>">
-            <font face="TH SarabunPSK" color="green" size="4"><B><?php echo $objResult["product_Name"];?></B></font>
-            <center><a href="pic/<?php echo $objResult["product_IMG"];?>"rel="lightbox[food]"><img src="pic/<?php echo $objResult["product_IMG"];?>" width="140" height="110" border="0" /></a></center>
-           <font face="TH SarabunPSK" color="green" size="4">
-             <?php echo iconv_substr($objResult["Description"],0,30, "UTF-8")."...";?>
+                  <?php while($objResult2 = mysqli_fetch_array($strSQL2)){
+                      $strSQL3=mysqli_query($mysqli,"select * from type where type_ID='".$objResult2['type_ID']."'");
+                      while($objResult3 = mysqli_fetch_array($strSQL3)){
+                    ?>
+                <option value="<?php echo $objResult2["improve_ID"]; ?>"><font size="4"><?php echo"รหัสการตรวจสอบ : "; echo $objResult2['improve_ID']; echo " , ประเภท :"; echo $objResult3['type_Name'];?></font></option>
+                <?php } }?>
+              </select>
+            </div>
+<?php }else {
+  echo "ไม่มีรายการสินค้าที่คุณออกแบบด้วยตนเอง";
+}
 
 
-          </font>
+?>
+            <div id="txtHint"></div>
 
-           <center><button class="button button4" type="button" onClick="this.form.action='check.php?product_ID=<?php echo $objResult["product_ID"];?>'; submit()"><font face = "TH SarabunPSK" >เช็คราคา</font></button>
-           </center>
-
-      </div>
-  <?php } ?>
-  </form>
+<?php?>
 
 
 
+
+
+
+
+
+</form>
 </body>
 </html>
+<?php }?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2017 at 02:44 PM
+-- Generation Time: May 10, 2017 at 02:09 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -124,7 +124,8 @@ INSERT INTO `customer` (`customer_ID`, `ID`, `customer_password`, `customer_Name
 (6, 9, '12345678', 'น้องครีม', 'นครศรีธรรมราช', '0811111111', '1473275983275'),
 (7, 10, '123456789', 'abc', 'ภูเก็ต', '0810838484', '5784758784375'),
 (8, 11, '12345678', 'เบส', 'ภูเก็ต', '0954583958', '1111111111111'),
-(9, 12, '123456789', 'ทราย', 'พังงา', '0811111111', '2222222222222');
+(9, 12, '123456789', 'ทราย', 'พังงา', '0811111111', '2222222222222'),
+(10, 13, 'cream093578', 'piratchana', '236', '0935788407', '1809900685866');
 
 -- --------------------------------------------------------
 
@@ -185,6 +186,32 @@ INSERT INTO `deposit` (`deposit_ID`, `deposit_cost`, `deposit_IMG`, `deposit_dat
 (17, 100, '3.png', '2017-03-16', '12.45', 2, 1),
 (18, 100, '1.png', '2017-03-17', '12.00', 1, 1),
 (19, 150, 'kmobilebanking4.jpg', '2017-03-24', '12.00', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `improve`
+--
+
+CREATE TABLE `improve` (
+  `improve_ID` int(11) NOT NULL,
+  `improve_IMG` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `improve_Price` int(11) DEFAULT NULL,
+  `type_ID` int(11) NOT NULL,
+  `status_ip_ID` int(11) NOT NULL,
+  `width` int(11) NOT NULL,
+  `height` int(11) NOT NULL,
+  `improve_Description` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `customer_ID` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `improve`
+--
+
+INSERT INTO `improve` (`improve_ID`, `improve_IMG`, `improve_Price`, `type_ID`, `status_ip_ID`, `width`, `height`, `improve_Description`, `customer_ID`) VALUES
+(1, 'A_TDDReport.pdf', NULL, 1, 1, 3, 3, 'fdsafdsfd', 1),
+(2, 'Virtual-Memory.pdf', NULL, 6, 1, 32, 2, '12wdsads', 1);
 
 -- --------------------------------------------------------
 
@@ -253,6 +280,7 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`product_ID`, `product_Name`, `product_IMG`, `Description`, `type_ID`, `Price`) VALUES
 (1, 'ประตูสแตนเลสแบบโปร่งด้านนอกแบบที่ 1', 'img1_w.jpg', 'ประตูสแตนเลสเลื่อนประกอบไปด้วยลายสับประรดใหญ่ ลายใบเฟิร์น ', 1, 8500),
+(126, 'หัวราวบันได ขนาด 3 นิ้ว', 'img12-etc.jpg', 'หัวราวบันได ขนาด 3 นิ้ว', 9, 600),
 (2, 'ประตูสแตนเลสแบบโปร่งด้านนอกแบบที่ 2', 'img2_w.jpg', 'ประตูสแตนเลสเลื่อนประกอบด้วยลายบัวกลาง และสแตนเลสเส้นดัดโค้ง', 1, 8500),
 (3, 'ประตูสแตนเลสแบบโปร่งด้านนอกแบบที่ 3', 'img3_w.jpg', 'ประตูเลื่อนสแตนเลสประดับด้วยดอกบัวกลาง\r\n', 1, 8500),
 (4, 'ประตูสแตนเลสแบบโปร่งด้านนอกแบบที่ 4', 'img4_w.jpg', 'ประตููผลัก ประกอบด้วยประตูเล็ก2บาน ประตูใหญ่1บาน และตัวล๊อค', 1, 8500),
@@ -265,6 +293,7 @@ INSERT INTO `product` (`product_ID`, `product_Name`, `product_IMG`, `Description
 (10, 'ประตูสแตนเลสแบบโปร่งด้านนอกแบบที่ 10', 'img10_w.jpg', 'ประตูเลื่อน เหล็กแท่งดัดโค้ง และลายปีกนกสีเงิน', 1, 7500),
 (11, 'ประตูสแตนเลสแบบโปร่งด้านนอกแบบที่ 11', 'img11_w.jpg', 'ประตูเลื่อน เหล็กแท่งดัดโค้ง และลายปีกนกสีทอง', 1, 7500),
 (12, 'ประตูสแตนเลสแบบโปร่งด้านนอกแบบที่ 12', 'img12_w.jpg', 'ประตูเลื่อน ประกอบประตูเล็ก1บาน ตกแต่งด้วยลายซีเล็ก ลายดอกไม้', 1, 7500),
+(125, 'หัวราวบันได ขนาด 2.5 นิ้ว', 'img12-etc.jpg', 'หัวราวบันได ขนาด 2.5 นิ้ว', 9, 500),
 (13, 'ประตูสแตนเลสแบบโปร่งด้านนอกแบบที่ 13', 'img13_w.jpg', 'ประตูเลื่อน ตกแต่งหลายลวดลาย เช่น ตะกร้อ และดอกไม้แปดแฉก', 1, 8500),
 (15, 'ประตูสแตนเลสแบบโปร่งด้านนอกแบบที่ 15', 'img15_w.jpg', 'ประตูเลื่อนผสมแบบทึบเล็กน้อย ประกอบด้วยลวกลายเรียบๆ เช่น ลายโดนัด', 1, 6500),
 (16, 'ประตูสแตนเลสแบบโปร่งด้านนอกแบบที่ 16', 'img16_w.jpg', 'ประตูสแตนเลสเลื่อนประกอบด้วยลวดลาย เช่น ลายใบมะม่วงใหญ่สีทองและสีเงิน', 1, 8500),
@@ -276,12 +305,14 @@ INSERT INTO `product` (`product_ID`, `product_Name`, `product_IMG`, `Description
 (22, 'ประตูสแตนเลสแบบโปร่งด้านนอกแบบที่ 22', 'img22_w.jpg', 'ประตูพับแบบเรียบๆ และลายโดนัท', 1, 6500),
 (23, 'ประตูสแตนเลสแบบโปร่งด้านนอกแบบที่ 23', 'img23_w.jpg', 'ประตูเลื่อนประกอบด้วยลวดลายมากมาย', 1, 7500),
 (24, 'หน้าต่างสแตนเลสด้านนอกแบบที่ 1', 'img1-win.jpg', 'หน้าต่างยึดติดกับผนังด้านนอก ประกอบด้วยเหล็กเส้นดัดโค้ง และลวดลาย เช่น ลายใบมะม่วงใหญ่ ', 2, 6500),
+(127, 'หัวราวบันได ขนาด 4 นิ้ว', 'img12-etc.jpg', 'หัวราวบันได ขนาด 4 นิ้ว', 9, 800),
 (26, 'หน้าต่างสแตนเลสด้านนอกแบบที่ 3', 'img2-win.jpg', 'หน้าต่างยึดติดด้านนอก ประกอบด้วยลายโดนัท', 2, 6500),
 (27, 'หน้าต่างสแตนเลสด้านนอกแบบที่ 4', 'img4-win.jpg', 'หน้างต่างยึดด้านนอกแบบเรียบๆ', 2, 5500),
 (28, 'หน้าต่างสแตนเลสด้านนอกแบบที่ 5', 'img5-win.jpg', 'หน้าต่างยึดด้านนอกแบบเรียบๆ', 2, 5500),
 (29, 'หน้าต่างสแตนเลสด้านนอกแบบที่ 6', 'img6-win.jpg', 'หน้าต่างยึดด้านนอก ประกอบด้วยเหล็กเส้นดัดโค้ง และลวดลาย', 2, 7000),
 (30, 'หน้าต่างสแตนเลสด้านนอกแบบที่ 7', 'img7-win.jpg', 'หน้าต่างยืดด้านนอก ประกอบลายต่างๆ เช่น ลายโรมันสีทอง และลายศรแฉก', 2, 8500),
 (31, 'หน้าต่างสแตนเลสด้านนอกแบบที่ 8', 'img8-win.jpg', 'หน้าต่างนึดด้านนอก ประกอบลายต่างๆ', 2, 7000),
+(128, 'หัวราวบันได ขนาด 6 นิ้ว', 'img12-etc.jpg', 'หัวราวบันได ขนาด 6 นิ้ว', 9, 1000),
 (102, 'ราวระเบียง', 'img3-bc.jpg', 'ราวระเบียง', 3, 3500),
 (101, 'ราวระเบียง', 'img2-bc.jpg', 'ราวระเบียง', 3, 3700),
 (100, 'ราวระเบียง', 'img1-bc.jpg', 'ราวระเบียง', 3, 4000),
@@ -333,7 +364,7 @@ INSERT INTO `product` (`product_ID`, `product_Name`, `product_IMG`, `Description
 (114, 'เหล็กแหลม', 'img5-st.jpg', 'เหล็กหแลม', 8, 650),
 (115, 'เหล็กแหลม', 'img6-st.jpg', 'เหล็กหแลม', 8, 450),
 (116, 'เหล็กหุ้มหลอดไฟ(วงกลม)', 'img11-etc.jpg', 'เหล็กหุ้มหลอดไฟ(วงกลม)', 9, 900),
-(117, 'หัวราวบันได', 'img12-etc.jpg', 'หัวราวบันได', 9, 800),
+(117, 'หัวราวบันได ขนาด 2 นิ้ว', 'img12-etc.jpg', 'หัวราวบันได ขนาด 2 นิ้ว', 9, 400),
 (118, 'เสาบันได', 'img13-etc.jpg', 'เสาบันได', 9, 1000),
 (119, 'เสาบันได', 'img14-etc.jpg', 'เสาบันได', 9, 1000),
 (120, 'เสาบันได', 'img15-etc.jpg', 'เสาบันได', 9, 1000),
@@ -377,6 +408,51 @@ INSERT INTO `promotion_news` (`news`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `scale`
+--
+
+CREATE TABLE `scale` (
+  `scale_id` int(11) NOT NULL,
+  `type_ID` int(11) NOT NULL,
+  `width` float NOT NULL,
+  `height` float NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `scale`
+--
+
+INSERT INTO `scale` (`scale_id`, `type_ID`, `width`, `height`) VALUES
+(1, 1, 6, 2),
+(2, 1, 3, 1.1),
+(3, 1, 3, 1.4),
+(4, 1, 3, 1.7),
+(5, 1, 3, 2),
+(6, 2, 0.8, 1.1),
+(7, 2, 0.6, 0.5),
+(8, 2, 1.2, 1.1),
+(9, 2, 1.5, 2.05),
+(10, 2, 2, 2.05),
+(11, 2, 1.6, 1.1),
+(12, 2, 2.4, 1.1),
+(13, 2, 3.2, 2.05),
+(14, 3, 1, 1),
+(15, 3, 1, 0.75),
+(16, 3, 1, 0.5),
+(17, 4, 1, 1),
+(18, 4, 1, 0.75),
+(19, 4, 1, 1.25),
+(20, 4, 2, 1),
+(21, 4, 2, 0.75),
+(22, 4, 2, 1.25),
+(23, 5, 1, 1),
+(24, 5, 1.8, 0.4),
+(25, 5, 1.8, 1),
+(26, 5, 3, 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `selfdesign`
 --
 
@@ -384,6 +460,7 @@ CREATE TABLE `selfdesign` (
   `selfDesign_ID` int(11) NOT NULL,
   `selfDesign_IMG` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `selfDesign_Description` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `S_price` int(11) DEFAULT NULL,
   `type_ID` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -407,6 +484,25 @@ INSERT INTO `status` (`status_ID`, `status_status`) VALUES
 (2, 'อยู่ระหว่างดำเนินการ'),
 (3, 'รอติดตั้ง'),
 (4, 'เสร็จแล้ว');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `status_improve`
+--
+
+CREATE TABLE `status_improve` (
+  `status_ip_ID` int(11) NOT NULL,
+  `status_ip` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `status_improve`
+--
+
+INSERT INTO `status_improve` (`status_ip_ID`, `status_ip`) VALUES
+(1, 'รอการประเมินราคา'),
+(2, 'การประเมินราคาเสร็จสิ้น');
 
 -- --------------------------------------------------------
 
@@ -446,7 +542,6 @@ INSERT INTO `type` (`type_ID`, `type_Name`, `type_IMG`) VALUES
 (5, 'รั้ว', 'รั้ว.jpg'),
 (6, 'กันสาด,หลังคา', 'กันสาด.jpg'),
 (7, 'หลังคาโรงจอดรถ', 'หลังคาโรงรถ.jpg'),
-(8, 'เหล็กแหลมบนกำแพง', 'เหล็กแหลม.jpg'),
 (9, 'อื่นๆ', 'asser.jpg');
 
 -- --------------------------------------------------------
@@ -478,7 +573,8 @@ INSERT INTO `user` (`ID`, `Username`, `Password`, `Userlevel`) VALUES
 (9, '1473275983275', '12345678', 'M'),
 (10, '5784758784375', '123456789', 'M'),
 (11, '1111111111111', '12345678', 'M'),
-(12, '2222222222222', '123456789', 'M');
+(12, '2222222222222', '123456789', 'M'),
+(13, '1809900685866', 'cream093578', 'M');
 
 --
 -- Indexes for dumped tables
@@ -515,6 +611,12 @@ ALTER TABLE `deposit`
   ADD PRIMARY KEY (`deposit_ID`);
 
 --
+-- Indexes for table `improve`
+--
+ALTER TABLE `improve`
+  ADD PRIMARY KEY (`improve_ID`);
+
+--
 -- Indexes for table `order`
 --
 ALTER TABLE `order`
@@ -527,6 +629,12 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`product_ID`);
 
 --
+-- Indexes for table `scale`
+--
+ALTER TABLE `scale`
+  ADD PRIMARY KEY (`scale_id`);
+
+--
 -- Indexes for table `selfdesign`
 --
 ALTER TABLE `selfdesign`
@@ -537,6 +645,12 @@ ALTER TABLE `selfdesign`
 --
 ALTER TABLE `status`
   ADD PRIMARY KEY (`status_ID`);
+
+--
+-- Indexes for table `status_improve`
+--
+ALTER TABLE `status_improve`
+  ADD PRIMARY KEY (`status_ip_ID`);
 
 --
 -- Indexes for table `tb_facebook`
@@ -580,12 +694,17 @@ ALTER TABLE `bank`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `customer_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `deposit`
 --
 ALTER TABLE `deposit`
   MODIFY `deposit_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT for table `improve`
+--
+ALTER TABLE `improve`
+  MODIFY `improve_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `order`
 --
@@ -595,7 +714,12 @@ ALTER TABLE `order`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `product_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
+--
+-- AUTO_INCREMENT for table `scale`
+--
+ALTER TABLE `scale`
+  MODIFY `scale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `selfdesign`
 --
@@ -606,6 +730,11 @@ ALTER TABLE `selfdesign`
 --
 ALTER TABLE `status`
   MODIFY `status_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `status_improve`
+--
+ALTER TABLE `status_improve`
+  MODIFY `status_ip_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tb_facebook`
 --
@@ -620,7 +749,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
