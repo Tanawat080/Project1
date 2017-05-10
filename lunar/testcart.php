@@ -273,7 +273,7 @@ if(!empty($_SESSION['shopping_cart']))
             <a href="format_1.php" class="btn btn-primary">กลับไปเลือกสินค้า</a>
             <a href="testcart.php?act=Cancel-Cart" class="btn btn-danger"> ยกเลิกตะกร้าสินค้า </a>
           <a><button type="submit" name="button" id="button" class="btn btn-warning"> คำนวณราคาใหม่ </button></a>
-            <a><button type="button" name="Submit2"  onclick="window.location='confirm.php';" class="btn btn-primary">
+            <a><button type="button" name="Submit2"  onclick="window.location='confirm1.php';" class="btn btn-primary">
             <span class="glyphicon glyphicon-shopping-cart"> </span> สั่งซื้อ </button></a>
             </td><td></td>
         </tr>

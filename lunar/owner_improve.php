@@ -12,7 +12,6 @@ if (!$_SESSION["IdNo"]){  //check session
   <title>STL Creative</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="home2.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -45,7 +44,6 @@ label{
 			<li><a href="contact1.php">จัดการข้อมูลร้าน</a></li>
 			<li><a href="manage_order.php">จัดการสถานะการสั่งซื้อ</a></li>
 			<li><a href="view_customer.php">ข้อมูลลูกค้า</a></li>
-			<li><a href="owner_improve.php">ประเมินราคาสินค้า</a></li>
 			<li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">รายงาน
         <span class="caret"></span></a>
@@ -67,7 +65,7 @@ label{
 </div>
 </nav>
 
-<div align="right" class="a">
+<div align="right">
 <table  width="12%" hight="10%" border="1">
 	<tr  bgcolor="#FCCCCF">
 		<td>
@@ -79,21 +77,42 @@ label{
 	</tr>
 </table>
 </div>
-<form class="form-inline" method="post" action="Update_news.php" enctype="multipart/form-data">
-<?php
-	include ("testdb.php");
-	$strSQL = mysqli_query($mysqli,"SELECT * FROM `Promotion_news`");
-	$objResult = mysqli_fetch_array($strSQL)
-
-?>
+<?
+ //คั่นกลางตรงนี้เริ่มใน่ส่วนโชว์ข้อมูล
+ ?>
+<br>
 <center>
-<div class="form-group">
-	<label for="des">ข่าวสาร : </label>
-	<font face = "MS Sans Serif"><textarea type="text" class="form-control" id="News" name="News" cols=50 rows=10 placeholder="โปรโมชั่นหรือข่าวสารต่างๆ"><?php echo $objResult["news"];?></textarea></font>
-</div>
-<br><br>
-<button class="button button3">อัปเดทข่าวสาร</button></center>
-</form>
+ <table width="1000" border="1">
+ <tr>
+
+ <th width="150"> <div align="center">รหัสการตรวจสอบ</div></th>
+ <th width="300"> <div align="center">ชื่อลูกค้า</div></th>
+ <th width="300"> <div align="center">ประเภทสินค้า</div></th>
+ <th width="120"> <div align="center">ราคา</div></th>
+  <th width="120"> <div align="center">สถานะ</div></th>
+ </tr>
+				 <?php
+					 include ("testdb.php");
+					 $strSQL = mysqli_query($mysqli,"select * from improve,type,status_improve,customer
+					 																 where improve.type_ID = type.type_ID and improve.customer_ID=customer.customer_ID
+																					 and improve.status_ip_ID = status_improve.status_ip_ID ");
+	while($objResult = mysqli_fetch_array($strSQL)){
+				 ?>
+				 <tr>
+				<td border="0"><center><a href="owner_improve2.php?improve_ID=<?php echo $objResult["improve_ID"];?>"><?php echo $objResult["improve_ID"];?></a></center></td>
+				 <td><center><?php echo $objResult["customer_Name"];?></center></td>
+				 <td><center><?php echo $objResult["type_Name"];?></center></td>
+				 <td><center><?php echo number_format($objResult["improve_Price"],2);?></center></td>
+				 <td><center><?php echo $objResult["status_ip"];?></center></td>
+
+		</tr>
+		<?php
+		}
+
+		?>
+
+
+
 </body>
 </html>
 <?php }?>

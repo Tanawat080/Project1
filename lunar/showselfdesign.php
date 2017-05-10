@@ -38,7 +38,8 @@ $row3 = mysqli_fetch_array($result3);
 <br>
 <?php
   if($row['status_ip_ID']==2){ ?>
-  <button class="button" type="submit">ยืนยันการสั่งซื้อ</button>
+  <br><button class="button" type="submit">ยืนยันการสั่งซื้อ</button><br>
+  <HR>
   <?php }else {
     echo '<h3><font color="red">';
     echo "ยังไม่ทำการตรวจสอบราคาจากทางร้าน";
