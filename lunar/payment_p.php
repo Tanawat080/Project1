@@ -683,8 +683,34 @@ font-size: 50px;
 
     	<center><div class="container">
         <center><h3> แจ้งชำระเงิน </h3></center>
-        <h4><a href="deposit_detail.php">คลิ๊กที่นี้!!! เพื่อดูข้อมูลการชำระเงิน</a></h4><br>
-    			<label for="idPD">เลือกธนาคาร : </label>
+        <h4><font color="red"><a href="deposit_detail.php?customer_ID=<?php echo $objResult['customer_ID']; ?>">คลิ๊กที่นี้!!! เพื่อดูข้อมูลการชำระเงิน</a></font></h4><br>
+				<label for="idPD">เลือกรหัสการสั่งซื้อ : </label>
+				<div class="form-group">
+						<select name="order_ID">
+							<option value="">เลือกรหัสการสั่งซื้อ</option>
+								<?php
+									include ("testdb.php");
+									$strSQL2 =mysqli_query($mysqli,"SELECT * FROM customer WHERE identification_No='".$_SESSION['IdNo']."'");
+									$objResult2 = mysqli_fetch_array($strSQL2);
+
+									$strSQL = mysqli_query($mysqli,"SELECT * FROM `order`,customer where `order`.customer_ID = customer.customer_ID and `order`.customer_ID = '".$objResult2['customer_ID']."' GROUP BY order_ID;");
+
+									//$objResult = mysqli_fetch_array($strSQL);
+											while($objResult = mysqli_fetch_array($strSQL)){
+								?>
+							<option value="<?php echo $objResult["order_ID"];?>"><?php echo "รหัสการสั่งซื้อที่ : "; echo $objResult["order_ID"]; ?></option>
+
+					 <?php
+					 }
+
+					 ?>
+					 </select>
+
+					</div>
+
+
+<br><br>
+					<label for="idPD">เลือกธนาคาร : </label>
           <div class="form-group">
     					<select name="bank">
     				 		<option value="">เลือกธนาคาร</option>
@@ -701,6 +727,8 @@ font-size: 50px;
     				 ?>
     				 </select>
     				</div>
+
+
     			<br><br>
 <div class="form-group">
     			<label for="idPD">วันที่ชำระเงิน : </label>

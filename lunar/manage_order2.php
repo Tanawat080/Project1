@@ -127,14 +127,8 @@ font-size: 20px;
 																						order_deatail.product_ID=product.product_ID AND
 																						status.status_ID=data_status.status_ID AND
 																						`order`.order_ID='".$_GET["order_ID"]."'");
-					$strSQL1 = mysqli_query($mysqli,"select `order`.order_ID,SUM(deposit_cost) as sumdeposit from customer,product,`order`,order_deatail,data_status,status,deposit
-															 																							where `order`.order_ID=order_deatail.order_ID AND
-															 																							`order`.order_ID=data_status.order_ID AND
-															 																							`order`.customer_ID=customer.customer_ID AND
-															 																							order_deatail.product_ID=product.product_ID AND
-															 																							status.status_ID=data_status.status_ID AND
-															 																							`order`.order_ID=deposit.order_ID AND
-															 																							`order`.order_ID='".$_GET["order_ID"]."'");
+					$strSQL1 = mysqli_query($mysqli,"select SUM(deposit_cost) as sumdeposit from deposit
+															 																							where order_ID='".$_GET["order_ID"]."'");
 				   $objResult = mysqli_fetch_array($strSQL);
 $objResult1 = mysqli_fetch_array($strSQL1);
 					 $equal = $objResult["total_cost"]-$objResult1["sumdeposit"];

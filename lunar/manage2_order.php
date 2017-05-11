@@ -85,10 +85,12 @@ label{
  <table width="720" border="1">
  <tr>
 
- <th width="150"> <div align="center">รหัสออร์เดอร์</div></th>
- <th width="300"> <div align="center">ชื่อลูกค้า</div></th>
+ <th width="150"> <div align="center">รหัสสินค้า</div></th>
+ <th width="300"> <div align="center">ชื่อสินค้า</div></th>
   <th width="150"> <div align="center">ราคารวม</div></th>
- <th width="120"> <div align="center">วันที่สั่งซื้อ</div></th>
+ <th width="120"> <div align="center">จ่ายแล้ว</div></th>
+ <th width="120"> <div align="center">คงเหลือ</div></th>
+ <th width="120"> <div align="center">วันที่ลงพื้นที่สำรวจ</div></th>
 
  </tr>
 				 <?php
@@ -99,7 +101,7 @@ label{
 	while($objResult = mysqli_fetch_array($strSQL)){
 				 ?>
 				 <tr>
-				<td border="0"><center><a href="manage2_order.php?order_ID=<?php echo $objResult["order_ID"];?>"><?php echo $objResult["order_ID"];?></a></center></td>
+				<td border="0"><center><a href="manage_order2.php?order_ID=<?php echo $objResult["order_ID"];?>"><?php echo $objResult["order_ID"];?></a></center></td>
 				 <td><center><?php echo $objResult["customer_Name"];?></center></td>
 				 <td><center><?php echo $objResult["total_cost"];?></center></td>
 				 <td><center><?php echo $objResult["order_Date"];?></center></td>

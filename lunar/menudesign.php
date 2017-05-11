@@ -227,7 +227,7 @@ if (isset($resultis)) {
 
             <div class="form-group">
 
-              <label for="sel1">เลือกสินค้าของท่าน :</label>
+              <label for="sel1">เลือกรหัสการตรวจสอบของท่าน :</label>
               <select class="form-control" name="scale" onchange="showUser(this.value)">
 
                   <?php while($objResult2 = mysqli_fetch_array($strSQL2)){

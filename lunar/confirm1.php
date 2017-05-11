@@ -726,7 +726,7 @@ if (!$_SESSION["IdNo"] || empty($_SESSION['shopping_cart'])){
             }
 
             </SCRIPT>
-<form  name="cal" method="post" action="comfirm.php">
+<form  name="cal" method="post" action="confirm.php">
 
 
 						<div class="container">
@@ -770,6 +770,7 @@ if (!$_SESSION["IdNo"] || empty($_SESSION['shopping_cart'])){
 					  	<tr>
 					      <td  align='right' colspan='4'><b>รวม</b></td>
 					     <td align='right'><b><?php echo number_format($total,2); ?></b></td>
+							 <input type="hidden" name="total" value="<?php echo $total; ?>">
 					      </tr>
 					  </table>
 						 <p align="right" ><a href="testcart.php">กลับหน้าตะกร้าสินค้า</a> </p>
