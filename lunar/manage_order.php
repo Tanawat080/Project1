@@ -82,35 +82,27 @@ label{
  ?>
 <br>
 <center>
- <table width="1000" border="1">
+ <table width="720" border="1">
  <tr>
 
  <th width="150"> <div align="center">รหัสออร์เดอร์</div></th>
  <th width="300"> <div align="center">ชื่อลูกค้า</div></th>
- <th width="300"> <div align="center">สินค้า</div></th>
+  <th width="150"> <div align="center">ราคารวม</div></th>
  <th width="120"> <div align="center">วันที่สั่งซื้อ</div></th>
- <th width="120"> <div align="center">วันที่ลงพื้นที่สำรวจ</div></th>
- <th width="120"> <div align="center">วันที่ติดตั้ง</div></th>
- <th width="120"> <div align="center">สถานะ</div></th>
+
  </tr>
 				 <?php
 					 include ("testdb.php");
-					 $strSQL = mysqli_query($mysqli,"select * from customer,product,`order`,order_deatail,data_status,status
-																						where `order`.order_ID=order_deatail.order_ID AND
-																						`order`.order_ID=data_status.order_ID AND
-																						`order`.customer_ID=customer.customer_ID AND
-																						order_deatail.product_ID=product.product_ID AND
-																						status.status_ID=data_status.status_ID");
+					 $strSQL = mysqli_query($mysqli,"select * from customer,`order`
+																						where `order`.customer_ID=customer.customer_ID
+																						");
 	while($objResult = mysqli_fetch_array($strSQL)){
 				 ?>
 				 <tr>
-				<td border="0"><center><a href="manage_order2.php?order_ID=<?php echo $objResult["order_ID"];?>"><?php echo $objResult["order_ID"];?></a></center></td>
+				<td border="0"><center><a href="manage2_order.php?order_ID=<?php echo $objResult["order_ID"];?>"><?php echo $objResult["order_ID"];?></a></center></td>
 				 <td><center><?php echo $objResult["customer_Name"];?></center></td>
-				 <td><center><?php echo $objResult["product_Name"];?></center></td>
+				 <td><center><?php echo $objResult["total_cost"];?></center></td>
 				 <td><center><?php echo $objResult["order_Date"];?></center></td>
-				 <td><center><?php echo $objResult["locate_Date"];?></center></td>
-				 <td><center><?php echo $objResult["setup_Date"];?></center></td>
-				<td><center><?php echo $objResult["status_status"];?></center></td>
 		</tr>
 		<?php
 		}

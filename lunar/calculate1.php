@@ -216,18 +216,64 @@ if (!$_SESSION["IdNo"]){
             $product_ID= $_GET["product_ID"];
 
           $strSQL = mysqli_query($mysqli,"SELECT * FROM customer WHERE identification_No='".$_SESSION['IdNo']."'");
-          $strSQL1 = mysqli_query($mysqli,"SELECT * FROM product WHERE product_ID='".$product_ID."'");
 
 
             $objResult = mysqli_fetch_array($strSQL);
-              $objResult1 = mysqli_fetch_array($strSQL1);
               $width=$_POST['width'];
               $height=$_POST['height'];
               $price=$_POST['gap'];
 
 
             ?>
+						
+						<div class="container">
+					  	<div class="row">
+					      	<div class="col-md-2"></div>
+					          <div class="col-md-8">
 
+					    <p><a href="cart.php">กลับหน้าตะกร้าสินค้า</a> &nbsp;  <button class="btn btn-primary" onClick="window.print()"> print </button></p>
+					    <table width="700" border="1" align="center" class="table">
+					      <tr>
+					        <td width="1558" colspan="5" align="center">
+					        <strong>สั่งซื้อสินค้า</strong></td>
+					      </tr>
+					      <tr class="success">
+					      <td align="center">ลำดับ</td>
+					        <td align="center">สินค้า</td>
+					        <td align="center">ราคา</td>
+					        <td align="center">จำนวน</td>
+					        <td align="center">รวม/รายการ</td>
+					      </tr>
+					  <?php
+					  	include ("testdb.php");
+					  	$total=0;
+					  	foreach($_SESSION['shopping_cart'] as $p_id=>$p_detail)
+					  	{
+					  		$strSQL = mysqli_query($mysqli,"select * from product where product_ID='".$p_id."';");
+					  		$row = mysqli_fetch_array($strSQL);
+					  		$strSQL1 = mysqli_query($mysqli,"SELECT * FROM scale WHERE scale_id='".$p_detail[1]."';");
+					  		$row1 = mysqli_fetch_array($strSQL1);
+					  		$sum=$row['Price'] * $p_detail[0]*$row1['width']*$row1['height'];
+					  		$total	+= $sum;
+					      echo "<tr>";
+					  	echo "<td align='center'>";
+					  	echo  $i += 1;
+					  	echo "</td>";
+					      echo "<td>" . $row["product_Name"] . "</td>";
+					      echo "<td align='right'>" .number_format($row['Price']*$row1['width']*$row1['height'],2) ."</td>";
+					      echo "<td align='right'>$p_detail[0]</td>";
+					      echo "<td align='right'>".number_format($sum,2)."</td>";
+					      echo "</tr>";
+					  	}
+					  	echo "<tr>";
+					      echo "<td  align='right' colspan='4'><b>รวม</b></td>";
+					      echo "<td align='right'>"."<b>".number_format($total,2)."</b>"."</td>";
+					      echo "</tr>";
+					  ?>
+					  </table>
+					  		</div>
+					  	</div>
+					  </div>
 
           <center>
             <div class="contianer" style="margin:auto;padding-top:5px;width:600px;">

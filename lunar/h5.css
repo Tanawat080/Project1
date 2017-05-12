@@ -10,7 +10,7 @@ shakeimage{position:relative}
          font-family: Georgia, "TH SarabunPSK", serif;
          padding: 0.5em;
          margin: 0.1em;
-         width: 31em;
+         width: 50em;
          background: #BEBEBE;
          margin: 0.1em 0;
          padding: 0.1em;
@@ -23,7 +23,7 @@ shakeimage{position:relative}
        color: #BEBEBE
      }     div.figure {
             float: left;
-            width: 20%;
+            width: 30%;  <!-- ความกว้างขอ กรอบ สี่เหลี่ยม -->
             border: thin silver solid;
             margin: 0.5em;
             padding: 0.5em;
@@ -42,7 +42,7 @@ shakeimage{position:relative}
        font-size: smaller;
        text-indent: 0;
      }div.figure img {
-       width: 150px;
-       height:50px;
+       width: 500px; <!-- ความกว้างของรูป -->
+       height:200px;
 
      }

@@ -181,7 +181,37 @@ p{
 
 <div class="container">
 <body>
+
+
 <form  method="post" action="a.php"><center>
+	<table width="1000" border="1">
+  <tr>
+
+  <th width="150"> <div align="center">รหัสการตรวจสอบ</div></th>
+  <th width="300"> <div align="center">ชื่อลูกค้า</div></th>
+  <th width="300"> <div align="center">ประเภทสินค้า</div></th>
+  <th width="120"> <div align="center">ราคา</div></th>
+   <th width="120"> <div align="center">สถานะ</div></th>
+  </tr>
+ 				 <?php
+ 					 include ("testdb.php");
+ 					 $strSQL = mysqli_query($mysqli,"select * from improve,type,status_improve,customer
+ 					 																 where improve.type_ID = type.type_ID and improve.customer_ID=customer.customer_ID
+ 																					 and improve.status_ip_ID = status_improve.status_ip_ID ");
+ 	while($objResult = mysqli_fetch_array($strSQL)){
+ 				 ?>
+ 				 <tr>
+ 				<td border="0"><center><a href="owner_improve2.php?improve_ID=<?php echo $objResult["improve_ID"];?>"><?php echo $objResult["improve_ID"];?></a></center></td>
+ 				 <td><center><?php echo $objResult["customer_Name"];?></center></td>
+ 				 <td><center><?php echo $objResult["type_Name"];?></center></td>
+ 				 <td><center><?php echo number_format($objResult["improve_Price"],2);?></center></td>
+ 				 <td><center><?php echo $objResult["status_ip"];?></center></td>
+
+ 		</tr>
+ 		<?php
+ 		}
+
+ 		?>
 <?php
 include ("testdb.php");
 
@@ -196,7 +226,8 @@ if (isset($resultis)) {
 ?>
 
             <div class="form-group">
-              <label for="sel1">เลือกสินค้าของท่าน :</label>
+
+              <label for="sel1">เลือกรหัสการตรวจสอบของท่าน :</label>
               <select class="form-control" name="scale" onchange="showUser(this.value)">
 
                   <?php while($objResult2 = mysqli_fetch_array($strSQL2)){

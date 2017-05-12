@@ -4,7 +4,7 @@
 <head>
   <title>Bootstrap Case</title>
   <meta charset="utf-8">
-    <link href="h.css" rel="stylesheet" >
+    <link href="hdoor1.css" rel="stylesheet" >
   <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -167,25 +167,17 @@ p{
 
   echo '<input type="hidden" name="type_ID" value="'.$a.'">'."\n";
   $strSQL = mysqli_query($mysqli,"SELECT * FROM product,type where product.type_ID=type.type_ID and product.type_ID= $a");
-
-
     while($objResult = mysqli_fetch_array($strSQL)){?>
-
-
         <div class="figure">
           <input type="hidden" name="type_ID" value="<?php echo $a;?>">
           <input type="hidden" name="product_ID" value="<?php echo $objResult["product_ID"];?>">
             <font face="TH SarabunPSK" color="green" size="4"><B><?php echo $objResult["product_Name"];?></B></font>
-            <center><a href="pic/<?php echo $objResult["product_IMG"];?>"rel="lightbox[food]"><img src="pic/<?php echo $objResult["product_IMG"];?>" width="140" height="110" border="0" /></a></center>
+            <center><a href="pic/<?php echo $objResult["product_IMG"];?>"rel="lightbox[food]"><img src="pic/<?php echo $objResult["product_IMG"];?>"  border="0" /></a></center>
            <font face="TH SarabunPSK" color="green" size="4">
              <?php echo iconv_substr($objResult["Description"],0,30, "UTF-8")."...";?>
-
-
           </font>
-
            <center><button class="button button4" type="button" onClick="this.form.action='check.php?product_ID=<?php echo $objResult["product_ID"];?>'; submit()"><font face = "TH SarabunPSK" >เช็คราคา</font></button>
            </center>
-
       </div>
   <?php } ?>
   </form>

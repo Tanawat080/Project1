@@ -136,7 +136,7 @@ opacity:0.8;
 									identification_No='".$_SESSION['IdNo']."'");
 									$objResult1 = mysqli_fetch_array($strSQL1);
 				$strSQL2 = "INSERT INTO deposit (`deposit_cost`, `deposit_IMG`, `deposit_date`, `deposit_time`, `order_ID`, `bank_ID`)
-																				VALUES ('".$_POST["Price"]."','".$_FILES["fileUpload"]["name"]."','".$_POST["date"]."','".$_POST["time"]."','".$objResult1["order_ID"]."','".$_POST["bank"]."') ";
+																				VALUES ('".$_POST["Price"]."','".$_FILES["fileUpload"]["name"]."','".$_POST["date"]."','".$_POST["time"]."','".$_POST["order_ID"]."','".$_POST["bank"]."') ";
 
 				$strSQL3=mysqli_query($mysqli,"select SUM(deposit_cost) as sumdeposit from customer,product,`order`,order_deatail,data_status,status,deposit
 																														where `order`.order_ID=order_deatail.order_ID AND
@@ -154,7 +154,7 @@ opacity:0.8;
 				?>
 
 <?php }
-Header("Location: deposit_detail.php");
+Header("Location: payment_p.php");
 
  ?>
 </body>

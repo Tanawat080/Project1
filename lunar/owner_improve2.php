@@ -47,6 +47,12 @@ font-size: 20px;
 .container {
 	font-family: "TH SarabunPSK";
 font-size: 20px;
+}.container textarea{
+	font-family: "TH SarabunPSK";
+font-size: 20px;
+}.container button {
+	font-family: "TH SarabunPSK";
+font-size: 20px;
 }
 </style>
 
@@ -106,7 +112,7 @@ font-size: 20px;
 		<td>
 			ชื่อผู้ใช้ :
 			<?php echo($_SESSION['IdNo']);?>
-			<?php //session_destroy();?>
+
 			<strong><a href="logout.php">Log out</a></strong>
 		</td>
 	</tr>
@@ -116,61 +122,54 @@ font-size: 20px;
  //คั่นกลางตรงนี้เริ่มใน่ส่วนโชว์ข้อมูล
  ?>
 <br>
-<form  class="form-inline" name="form1" method="post" action="manage_order3.php?order_ID=<?php echo $_GET["order_ID"];?>" enctype="multipart/form-data">
+<form  class="form-inline" name="form1" method="post" action="owner_improve3.php?improve_ID=<?php echo $_GET["improve_ID"];?>" enctype="multipart/form-data">
 
 				 <?php
 					 include ("testdb.php");
-					 $strSQL = mysqli_query($mysqli,"select * from customer,product,`order`,order_deatail,data_status,status,deposit
-																						where `order`.order_ID=order_deatail.order_ID AND
-																						`order`.order_ID=data_status.order_ID AND
-																						`order`.customer_ID=customer.customer_ID AND
-																						order_deatail.product_ID=product.product_ID AND
-																						status.status_ID=data_status.status_ID AND
-																						`order`.order_ID='".$_GET["order_ID"]."'");
-					$strSQL1 = mysqli_query($mysqli,"select SUM(deposit_cost) as sumdeposit from deposit
-															 																							where order_ID='".$_GET["order_ID"]."'");
+					 $strSQL = mysqli_query($mysqli,"select * from improve,type,status_improve,customer
+					 																 where improve.type_ID = type.type_ID and improve.customer_ID=customer.customer_ID
+																					 and improve.status_ip_ID = status_improve.status_ip_ID and
+																					 improve_ID ='".$_GET["improve_ID"]."'");
+
 				   $objResult = mysqli_fetch_array($strSQL);
-$objResult1 = mysqli_fetch_array($strSQL1);
-					 $equal = $objResult["total_cost"]-$objResult1["sumdeposit"];
+
+
 
 				 ?>
 
 				 <div class="container">
 		       <center>
-		           <h1> จัดการออร์เดอร์</h1><br>
+		           <h1> ตรวจสอบราคาสินค้า</h1><br>
 		           <label for="ex3">ชื่อ-สกุล : </label>
 		           <input class="form-control" id="customer_Name" name="customer_Name" type="text" value="<?=$objResult["customer_Name"];?>" disabled>
 		           <br><br>
-							 <label for="ex3">สินค้า : </label>
-		           <input class="form-control" id="product_Name" name="product_Name" type="text" value="<?=$objResult["product_Name"];?>" disabled>
+							 <label for="ex3">ประเภท : </label>
+		           <input class="form-control" id="product_Name" name="type_Name" type="text" value="<?=$objResult["type_Name"];?>" disabled>
 		           <br><br>
-							 <label for="ex3">ราคารวม : </label>
-								<input class="form-control" id="locate_Date" name="totalcost" type="text" value="<?=$objResult["total_cost"];?>" disabled>
+							 <label for="ex3">ราคา : </label>
+								<input class="form-control" id="locate_Date" name="price" type="text" value="" >
 								<br><br>
-								<label for="ex3">จ่ายแล้ว : </label>
-								<input class="form-control" id="locate_Date" name="deposit_cost" type="text" value="<?=$objResult1["sumdeposit"];?>" disabled>
-								<label for="ex3">คงเหลือ : </label>
-								<input class="form-control" id="locate_Date" name="locate_Date" type="text" value="<?=$equal;?>" disabled>
+								<label for="ex3">กว้าง : </label>
+								<input class="form-control" id="locate_Date" name="width" type="text" value="<?=$objResult["width"];?>" disabled>
+								<label for="ex3">ยาว : </label>
+								<input class="form-control" id="locate_Date" name="height" type="text" value="<?=$objResult["height"];?>" disabled>
 								<br><br>
-							 <label for="ex3">วันที่สั่งซื้อ : </label>
-		           <input class="form-control" id="order_Date" name="order_Date" type="text" value="<?=$objResult["order_Date"];?>" disabled>
-		         <br><br>
-						  <label for="ex3">วันที่ลงพื้นที่สำรวจ : </label>
-		           <input class="form-control" id="locate_Date" name="locate_Date" type="text" value="<?=$objResult["locate_Date"];?>" disabled>
-		           <br><br>
-							 <label for="ex3">วันที่ติดตั้ง : ปปปป-ดด-วว </label>
-		           <input class="form-control" id="setup_Date" name="setup_Date" type="text" value="<?=$objResult["setup_Date"];?>">
+								<iframe src="self/<?php echo $objResult["improve_IMG"];?>" type=frame&vlink=xx&link=xx&css=xxx&bg=xx&bgcolor=xx marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scorlling=yes width=500 height=600></iframe>
 
-		           <br><br>
+								<br><br>
+							 <label for="ex3">รายละเอียดเพิ่มเติม : </label>
+		           <textarea class="form-control" id="order_Date" name="description" type="text" style="width:300px" disabled><?php echo $objResult["improve_Description"];?></textarea>
+		         <br><br>
+
 							 <label for="ex3">สถานะ : </label>
 							 <select name="status">
 								 <option value="">โปรดเลือกสถานะออเดอร์</option>
 						<?php
 							include ("testdb.php");
-							$strSQL1 = mysqli_query($mysqli,"SELECT * FROM status");
+							$strSQL1 = mysqli_query($mysqli,"SELECT * FROM status_improve");
 									while($objResult1 = mysqli_fetch_array($strSQL1)){
 						?>
-					<option value="<?php echo $objResult1["status_ID"];?>"><?php echo $objResult1["status_status"];?></option>
+					<option value="<?php echo $objResult1["status_ip_ID"];?>"><?php echo $objResult1["status_ip"];?></option>
 			 <?php
 			 }
 			 ?>
