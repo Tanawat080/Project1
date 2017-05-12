@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="vat" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="36525dc3-4740-44b8-9f5d-4a88487b54ea">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     vat.`NO` AS vat_NO,
+     vat.`Circulation` AS vat_Circulation,
+     vat.`vat` AS vat_vat,
+     vat.`Total` AS vat_Total
+FROM
+     `vat` vat]]>
+	</queryString>
+	<field name="vat_NO" class="java.lang.Integer"/>
+	<field name="vat_Circulation" class="java.lang.Integer"/>
+	<field name="vat_vat" class="java.lang.String"/>
+	<field name="vat_Total" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="83" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="134" height="83" uuid="64dc8d71-7b15-4f7f-84d4-582ddf844ec2"/>
+				<imageExpression><![CDATA["C:\\Users\\asus\\Pictures\\ss-312-304-stainless-steel-pipe-stainless.jpg"]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement x="134" y="0" width="668" height="55" backcolor="#000000" uuid="a2712fa1-c7e2-470a-94a1-0f4595c79b16"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="242" y="0" width="271" height="59" forecolor="#FFFFFF" uuid="195541ff-3ac2-4db3-a1df-c1ed31b6fbe3"/>
+				<textElement>
+					<font fontName="Impact" size="48"/>
+				</textElement>
+				<text><![CDATA[Stl Creative]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="134" y="51" width="668" height="32" backcolor="#CCCCCC" uuid="c92d8c97-22af-4314-ad8a-9d675fb7e853"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="472" y="51" width="330" height="28" uuid="4ddc13b1-e630-4083-bdea-332be2db4560"/>
+				<textElement>
+					<font fontName="Arial Rounded MT Bold" size="24"/>
+				</textElement>
+				<text><![CDATA[INCOME PER MONTH + VAT]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="68" y="41" width="100" height="20" uuid="43a4e192-219b-4b89-a35e-14a5b7c624aa"/>
+				<text><![CDATA[vat_NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="41" width="100" height="20" uuid="7f58c718-067d-43ac-97b5-792e745285ff"/>
+				<text><![CDATA[vat_Circulation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="41" width="100" height="20" uuid="e4b87d26-56a6-4d2c-a595-f421dcd1abf7"/>
+				<text><![CDATA[vat_vat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="618" y="41" width="100" height="20" uuid="98a117f0-7153-468c-9e60-fb6c97f97260"/>
+				<text><![CDATA[vat_Total]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="31" width="802" height="1" uuid="d4178038-cb80-4014-8d04-d00d6536f72c"/>
+			</line>
+			<line>
+				<reportElement x="0" y="60" width="802" height="1" uuid="caff074d-b072-4371-aef4-37f091a9e3ae"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="68" y="22" width="100" height="20" uuid="924f6911-ddc4-4db1-b53f-6e91724d6df4"/>
+				<textFieldExpression><![CDATA[$F{vat_NO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="257" y="22" width="100" height="20" uuid="7fe8f54a-471b-4ac9-8816-47b1672eb00b"/>
+				<textFieldExpression><![CDATA[$F{vat_Circulation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="425" y="22" width="100" height="20" uuid="6515ef71-0546-4667-9c73-d3906e1cd550"/>
+				<textFieldExpression><![CDATA[$F{vat_vat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="618" y="22" width="100" height="20" uuid="dcd56e91-1b79-465a-a23c-bb5eb260c9bd"/>
+				<textFieldExpression><![CDATA[$F{vat_Total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
