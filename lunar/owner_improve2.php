@@ -126,9 +126,10 @@ font-size: 20px;
 
 				 <?php
 					 include ("testdb.php");
-					 $strSQL = mysqli_query($mysqli,"select * from improve,type,status_improve,customer
+					 $strSQL = mysqli_query($mysqli,"select * from improve,type,status_improve,customer,scale
 					 																 where improve.type_ID = type.type_ID and improve.customer_ID=customer.customer_ID
 																					 and improve.status_ip_ID = status_improve.status_ip_ID and
+																					 scale.scale_id=improve.scale_id and
 																					 improve_ID ='".$_GET["improve_ID"]."'");
 
 				   $objResult = mysqli_fetch_array($strSQL);

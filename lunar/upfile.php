@@ -23,10 +23,7 @@ if (!$_SESSION["IdNo"]){  //check session
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <script>
-$.urlParam = function(name){
-     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-     return results[1] || 0;
- }
+
 function showUser(str) {
   if (str=="") {
     document.getElementById("txtHint").innerHTML="";
@@ -43,8 +40,8 @@ function showUser(str) {
       document.getElementById("txtHint").innerHTML=this.responseText;
     }
   }
-  var a = $.urlParam("product_ID");
-  xmlhttp.open("GET","checkprice.php?q="+str+"&product_id="+a,true);
+
+  xmlhttp.open("GET","scale.php?q="+str,true);
   xmlhttp.send();
 }
 </script>
@@ -208,26 +205,20 @@ input[type='range'] {
 
 <h1> อัพโหลดรูปภาพสำหรับ การออกแบบด้วยตัวเอง </h1>
     <label for="idPD">เลือกประเภท : </label><div class="form">
-      <select name="type">
-        <option value="">เลือกประเภท</option>
-          <?php
-            include ("testdb.php");
-            $strSQL = mysqli_query($mysqli,"SELECT * FROM type");
+			<select class="form-control" name="type" style="width:200px"; onchange="showUser(this.value)">
 
-                while($objResult = mysqli_fetch_array($strSQL)){
-          ?>
-        <option value="<?php echo $objResult["type_ID"];?>"><?php echo $objResult["type_Name"]; ?></option>
-
-     <?php
-     }
-     ?>
-     </select>
+				                  <?php include ("testdb.php");
+				            $strSQL = mysqli_query($mysqli,"SELECT * FROM type");
+			                while($objResult = mysqli_fetch_array($strSQL)){
+			                    ?>
+			                <option value="<?php echo $objResult["type_ID"];?>"><?php echo $objResult["type_Name"]; ?></option>
+			                <?php } ?>
+			              </select>
 
 
   <div class="form-group">
-      <font><label for="des">ขนาด : </label></font>
-      <input type="text" class="form-control"  name="scale_w" style="width:200px"; placeholder="ขนาดความกว้าง">
-      <input type="text" class="form-control"  name="scale_h" style="width:200px"; placeholder="ขนาดความยาว"> </div>
+      <div id="txtHint"></div>
+</div>
         <label for="des">รายละเอียดเพิ่มเติม : </label>
         <font ><textarea class="form-control" rows="5"  style="width:300px"; name="description" placeholder="รายละเอียดเพิ่มเติม"></textarea></font>
         <font color="red" ><label for="des">** กรุณาระบุรายละเอียดอย่างชัดเจน ** </label></font>

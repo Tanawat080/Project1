@@ -183,7 +183,7 @@ p{
 <body>
 
 
-<form  method="post" action="a.php"><center>
+<form  method="post" action="cfSelfdesign.php"><center>
 	<table width="1000" border="1">
   <tr>
 

@@ -31,6 +31,9 @@ a{
 label{
 	font-family: "TH SarabunPSK";
 	font-size: 20px;
+}h1,h2,h3,h4,h5{
+	font-family: "TH SarabunPSK";
+
 }
 </style>
 <nav class="navbar navbar-inverse">
@@ -80,39 +83,97 @@ label{
 <?
  //คั่นกลางตรงนี้เริ่มใน่ส่วนโชว์ข้อมูล
  ?>
-<br>
+<body>
+		<form   name="form1" method="post" action="manage_order3.php?order_ID=<?php echo $_GET["order_ID"];?>" enctype="multipart/form-data">
 <center>
- <table width="720" border="1">
+ <table width="720" border="2">
  <tr>
 
  <th width="150"> <div align="center">รหัสสินค้า</div></th>
  <th width="300"> <div align="center">ชื่อสินค้า</div></th>
-  <th width="150"> <div align="center">ราคารวม</div></th>
- <th width="120"> <div align="center">จ่ายแล้ว</div></th>
- <th width="120"> <div align="center">คงเหลือ</div></th>
- <th width="120"> <div align="center">วันที่ลงพื้นที่สำรวจ</div></th>
+  <th width="150"> <div align="center">จำนวน</div></th>
+
 
  </tr>
 				 <?php
 					 include ("testdb.php");
-					 $strSQL = mysqli_query($mysqli,"select * from customer,`order`
-																						where `order`.customer_ID=customer.customer_ID
+					 $strSQL = mysqli_query($mysqli,"select product_ID from order_deatail where `order_ID`='".$_GET["order_ID"]."' group by product_ID
 																						");
 	while($objResult = mysqli_fetch_array($strSQL)){
+				$SQL1=mysqli_query($mysqli,"select * from product where product_ID='".$objResult["product_ID"]."'");
 				 ?>
 				 <tr>
-				<td border="0"><center><a href="manage_order2.php?order_ID=<?php echo $objResult["order_ID"];?>"><?php echo $objResult["order_ID"];?></a></center></td>
-				 <td><center><?php echo $objResult["customer_Name"];?></center></td>
-				 <td><center><?php echo $objResult["total_cost"];?></center></td>
-				 <td><center><?php echo $objResult["order_Date"];?></center></td>
+				<td border="0"><center><?php echo $objResult["product_ID"];?></center></td>
+				<?php while($objResult1 = mysqli_fetch_array($SQL1)){?>
+				 <td><center><?php echo $objResult1["product_Name"];?></center></td>
+				 <?php }?>
+				 <?php
+				 	$SQL2=mysqli_query($mysqli,"SELECT product_ID,COUNT(product_ID) as amountPd from order_deatail where product_ID='".$objResult["product_ID"]."' and order_ID='".$_GET["order_ID"]."' group by product_ID");
+				 while($objResult2 = mysqli_fetch_array($SQL2)){?>
+				 <td><center><?php echo $objResult2["amountPd"]; ?></center></td>
+				 <?php } ?>
 		</tr>
+
 		<?php
 		}
-
 		?>
+	</table>
+<?php
+$SQL3 = mysqli_query($mysqli,"select SUM(deposit_cost) as sumdeposit from deposit
+																																	where order_ID='".$_GET["order_ID"]."'");
+$objResult3 = mysqli_fetch_array($SQL3);
 
+$SQL4 = mysqli_query($mysqli,"select *  from `order` where order_ID='".$_GET["order_ID"]."'");
+$objResult4 = mysqli_fetch_array($SQL4);
 
+$total= $objResult4["total_cost"]-$objResult3["sumdeposit"];
 
+$SQL6 = mysqli_query($mysqli,"select *  from data_status,status where data_status.status_ID=status.status_ID AND order_ID='".$_GET["order_ID"]."'");
+$objResult6 = mysqli_fetch_array($SQL6);
+?>
+<div class="container">
+	<h2>รหัสการที่ซื้อที่ : <?php echo $_GET["order_ID"];?></h2>
+	<div class="form-inline">
+<label for="ex3">ราคารวม : </label>
+<input class="form-control"  name="totalcost" type="text" value="<?=number_format($objResult4["total_cost"],2);?>" disabled>
+</div>
+<br>
+<div class="form-inline">
+<label for="ex3">จ่ายแล้ว : </label>
+<input class="form-control"  name="deposit_cost" type="text" value="<?=number_format($objResult3["sumdeposit"],2);?>" disabled>
+<label for="ex3">คงเหลือ : </label>
+<input class="form-control"  name="total" type="text" value="<?=number_format($total,2);?>" disabled><br><br>
+</div>
+<div class="form-inline">
+<label for="ex3">สถานะ : </label>
+<select class="form-control" name="status">
+	<option value="<?php echo $objResult6['status_ID'];?>"><?php echo $objResult6['status_status'] ?></option>
+<?php
+include ("testdb.php");
+$strSQL1 = mysqli_query($mysqli,"SELECT * FROM status");
+	 while($objResult1 = mysqli_fetch_array($strSQL1)){
+?>
+<option value="<?php echo $objResult1["status_ID"];?>"><?php echo $objResult1["status_status"];?></option>
+<?php } ?>
+</select>
+</div>
+
+<?php
+	$SQL5 = mysqli_query($mysqli,"select *  from data_status where order_ID='".$_GET["order_ID"]."'");
+	$objResult5 = mysqli_fetch_array($SQL5);
+	?>
+	<br>
+	<div class="form-inline">
+	<label for="ex3">วันที่ลงพื้นที่สำรวจ : </label>
+	<input class="form-control"  name="locate_Date" type="text" value="<?=$objResult5["locate_Date"];?>">
+	<label for="ex3">วันที่ติดตั้ง : </label>
+	<input class="form-control"  name="setup_Date" type="text" placeholder="ปปปป-ดด-วว"value="<?=$objResult5["setup_Date"];?>" ><br>
+	</div>
+
+<br>
+<button type="submit"class="btn btn-default">ตกลง</button></center>
+</div><br>
 </body>
+
 </html>
 <?php }?>

@@ -32,7 +32,7 @@ if (!$_SESSION["IdNo"]){  //check session
 a{
 	font-family: "TH SarabunPSK";
 	font-size: 20px;
-}h1,h2,h3,h4{
+}h1,h2,h3,h4,h5{
 	font-family: "TH SarabunPSK";
 
 }
@@ -136,8 +136,8 @@ opacity:0.8;
 				$strSQL1=mysqli_query($mysqli,"select * from customer where identification_No='".$_SESSION['IdNo']."'");
 
 									$objResult1 = mysqli_fetch_array($strSQL1);
-									$strSQL2 = "INSERT INTO `improve`(  `improve_IMG`,  `type_ID`, `status_ip_ID`, `width`, `height`, `improve_Description`, `customer_ID`)
-															VALUES ('".$_FILES["fileUpload1"]["name"]."','".$_POST['type']."',1,'".$_POST['scale_w']."','".$_POST['scale_h']."','".$_POST['description']."','".$objResult1['customer_ID']."')";
+									$strSQL2 = "INSERT INTO `improve`(  `improve_IMG`,  `type_ID`, `status_ip_ID`, `improve_Description`, `customer_ID`,scale_id)
+															VALUES ('".$_FILES["fileUpload1"]["name"]."','".$_POST['type']."',1,'".$_POST['description']."','".$objResult1['customer_ID']."','".$_POST['scale']."')";
 
 									$objQuery2 = mysqli_query($mysqli,$strSQL2);
 
@@ -145,23 +145,26 @@ opacity:0.8;
 
 
 				$objResult3 = mysqli_fetch_array($strSQL3);
-
-
+				$SQL1=mysqli_query($mysqli,"select * from scale where scale_id='".$objResult3['scale_id']."'");
+				$objResult4 = mysqli_fetch_array($SQL1);
 				?>
 
 <?php }
  ?>
  <center>
      <h2>อัพโหลดสำเร็จ!!!!</h2>
-		 <h5>รหัสการตรวจสอบของคุณคือ <?php echo $objResult3['improve_ID'];?></h5>
+		 <h3 >รหัสการตรวจสอบของคุณคือ <?php echo $objResult3['improve_ID'];?></h3>
  <h4>กรุณารอการตอบรับและคำนวณราคาจากทางร้าน</h4>
 
- <iframe src="self/<?php echo $objResult3["improve_IMG"];?>" type=frame&vlink=xx&link=xx&css=xxx&bg=xx&bgcolor=xx marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scorlling=yes width=500 height=600></iframe>
 
+<div style="border:1px solid black; width:700px;
+height:100%; background:#FFFFFF; ">
+ <center><iframe src="self/<?php echo $objResult3["improve_IMG"];?>" type=frame&vlink=xx&link=xx&css=xxx&bg=xx&bgcolor=xx marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scorlling=yes width=700 height=600></iframe>
+</div>
      <!--<img src="self/<?php #echo $objResult3["improve_IMG"];?>" width="140" height="110" border="0" /><br>-->
 
 
-     <h4>กว้าง : <?php echo $objResult3['width'];?> เมตร  ยาว : <?php echo $objResult3['height'];?> เมตร <br></h4>
+     <h4>กว้าง : <?php echo $objResult4['width'];?> เมตร  ยาว : <?php echo $objResult4['height'];?> เมตร <br></h4>
      <h4>รายละเอียดเพิ่มเติม : <?php echo $objResult3['improve_Description'];?> <br></h4>
 
 <button type="button" class="btn btn-success" onclick="window.location='userpage.php';">เสร็จสิ้น</button>

@@ -86,10 +86,10 @@ label{
  <tr>
 
  <th width="150"> <div align="center">รหัสการตรวจสอบ</div></th>
- <th width="300"> <div align="center">ชื่อลูกค้า</div></th>
- <th width="300"> <div align="center">ประเภทสินค้า</div></th>
+ <th width="250"> <div align="center">ชื่อลูกค้า</div></th>
+ <th width="200"> <div align="center">ประเภทสินค้า</div></th>
  <th width="120"> <div align="center">ราคา</div></th>
-  <th width="120"> <div align="center">สถานะ</div></th>
+  <th width="270"> <div align="center">สถานะ</div></th>
  </tr>
 				 <?php
 					 include ("testdb.php");

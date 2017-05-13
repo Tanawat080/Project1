@@ -77,6 +77,8 @@ label{
 	</tr>
 </table>
 </div>
+<body>
+
 <?
  //คั่นกลางตรงนี้เริ่มใน่ส่วนโชว์ข้อมูล
  ?>
@@ -89,27 +91,42 @@ label{
  <th width="300"> <div align="center">ชื่อลูกค้า</div></th>
   <th width="150"> <div align="center">ราคารวม</div></th>
  <th width="120"> <div align="center">วันที่สั่งซื้อ</div></th>
+  <th width="120"> <div align="center">สถานะ</div></th>
 
  </tr>
 				 <?php
 					 include ("testdb.php");
-					 $strSQL = mysqli_query($mysqli,"select * from customer,`order`
-																						where `order`.customer_ID=customer.customer_ID
-																						");
-	while($objResult = mysqli_fetch_array($strSQL)){
+					 $strSQL0 = mysqli_query($mysqli,"select `order_ID`,total_cost,order_Date from `order` group by `order`.`order_ID`");
+					 //$result0 = mysqli_fetch_array($strSQL0);
+
+
+
+	while($objResult0 = mysqli_fetch_array($strSQL0)){
 				 ?>
 				 <tr>
-				<td border="0"><center><a href="manage2_order.php?order_ID=<?php echo $objResult["order_ID"];?>"><?php echo $objResult["order_ID"];?></a></center></td>
+				<td border="0"><center><a href="manage2_order.php?order_ID=<?php echo $objResult0["order_ID"];?>"><?php echo $objResult0["order_ID"];?></a></center></td>
+				<?php $strSQL = mysqli_query($mysqli,"select * from customer,`order`,data_status
+																				 where `order`.customer_ID=customer.customer_ID and
+																				 `order`.order_ID = data_status.order_ID
+																				 AND `order`.order_ID='".$objResult0["order_ID"]."'");
+																$objResult= mysqli_fetch_array($strSQL)			?>
 				 <td><center><?php echo $objResult["customer_Name"];?></center></td>
-				 <td><center><?php echo $objResult["total_cost"];?></center></td>
-				 <td><center><?php echo $objResult["order_Date"];?></center></td>
+
+
+				 <td><center><?php echo number_format($objResult0["total_cost"],2);?></center></td>
+				 <td><center><?php echo $objResult0["order_Date"];?></center></td>
+				 <?php
+					 	$SQL=mysqli_query($mysqli,"select * from status where status_ID ='".$objResult["status_ID"]."'");
+						while($objResult1 = mysqli_fetch_array($SQL)){
+					 ?>
+					<td><center><?php echo $objResult1["status_status"];?></center></td>
+					<?php } ?>
 		</tr>
 		<?php
 		}
-
 		?>
 
-
+</form>
 
 </body>
 </html>
