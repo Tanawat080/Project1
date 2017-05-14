@@ -29,7 +29,10 @@ div{
 h2{
   font-family: "TH SarabunPSK";
   font-size: 50px;
-
+}
+h4{
+  font-family: "TH SarabunPSK";
+  font-size: 50px;
 }
 p{
   font-family: "TH SarabunPSK";
@@ -148,11 +151,11 @@ opacity:0.8;
 
   	 <center><h2> ติดต่อเรา </h2>
       <h4><?=$objResult["company_Name"];?></h4>
-      <h4>ที่อยู่ <?=$objResult["company_Address"];?> <br></h4>
-      <h4>เบอร์โทรศัพท์ <?=$objResult["company_tel"];?> <br></h4>
-      <h4>อีเมลล์ <?=$objResult["company_Email"];?> <br></h4>
-      <h4>แฟกซ์ <?=$objResult["company_Fax"];?> <br></h4>
-      <h4>เวลาทำการ <?=$objResult["business_Hour"];?> <br></h4>
+      <h4>ที่อยู่: <?=$objResult["company_Address"];?> <br></h4>
+      <h4>เบอร์โทรศัพท์: <?=$objResult["company_tel"];?> <br></h4>
+      <h4>อีเมลล์: <?=$objResult["company_Email"];?> <br></h4>
+      <h4>แฟกซ์: <?=$objResult["company_Fax"];?> <br></h4>
+      <h4>เวลาทำการ: <?=$objResult["business_Hour"];?> <br></h4>
     </center>
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2017 at 04:23 AM
+-- Generation Time: May 14, 2017 at 10:42 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -381,17 +381,13 @@ CREATE TABLE `order` (
 INSERT INTO `order` (`order_ID`, `order_Date`, `total_cost`, `customer_ID`) VALUES
 (1, '2016-03-01', 1500, 1),
 (2, '2016-03-21', 3000, 2),
-(25, '2017-05-13', 41420, 1),
 (24, '2017-05-13', 41420, 1),
 (23, '2017-05-13', 51930, 1),
 (21, '2017-05-11', 29800, 1),
 (22, '2017-05-13', 112670, 1),
 (26, '2017-05-13', 107720, 1),
-(27, '2017-05-13', 107720, 1),
 (28, '2017-05-13', 102000, 1),
-(29, '2017-05-13', 102000, 1),
 (30, '2017-05-13', 8580, 1),
-(31, '2017-05-13', 8580, 1),
 (32, '2017-05-13', 8580, 1),
 (33, '2017-05-13', 28050, 1),
 (34, '2017-05-13', 9000, 1),
@@ -913,6 +909,37 @@ INSERT INTO `user` (`ID`, `Username`, `Password`, `Userlevel`) VALUES
 (13, '1809900685866', 'cream093578', 'M'),
 (14, '1234567890000', 'Ga.pom1539', 'M');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vat`
+--
+
+CREATE TABLE `vat` (
+  `NO` int(10) NOT NULL,
+  `Circulation` int(20) NOT NULL,
+  `vat` varchar(20) NOT NULL,
+  `Total` int(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vat`
+--
+
+INSERT INTO `vat` (`NO`, `Circulation`, `vat`, `Total`) VALUES
+(1, 685900, '7%', 4801300),
+(2, 743000, '7%', 5201000),
+(3, 450784, '7%', 3155488),
+(4, 567000, '7%', 3969000),
+(5, 654900, '7%', 4584300),
+(6, 832954, '7%', 5830678),
+(7, 556000, '7%', 3892000),
+(8, 765000, '7%', 5355000),
+(9, 769349, '7%', 5385443),
+(10, 764389, '7%', 5350723),
+(11, 887520, '7%', 6212640),
+(12, 854210, '7%', 5979470);
+
 --
 -- Indexes for dumped tables
 --
@@ -1007,6 +1034,12 @@ ALTER TABLE `type`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `vat`
+--
+ALTER TABLE `vat`
+  ADD PRIMARY KEY (`NO`);
 
 --
 -- AUTO_INCREMENT for dumped tables

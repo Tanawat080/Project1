@@ -9,7 +9,7 @@ include_once("phpjasperxml_0.9d/class/PHPJasperXML.inc.php");
 $server = "localhost";
 $user = "root";
 $pass = "";
-$db = "stl_report";
+$db = "stl";
 mysql_query("SET NAMES UTF8");
 
 $PHPJasperXML = new PHPJasperXML();

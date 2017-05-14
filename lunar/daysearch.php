@@ -1,32 +1,41 @@
+<body>
 <?php
 include 'connectt.php';
-$sql = mysqli_query($mysqli,"select * from day where Day like '%{$_POST['Day']}%'");
-
+$sql = mysqli_query($mysqli,"SELECT * FROM `order` WHERE order_Date = '".$_POST['orderDate']."'");
+echo ""
 ?>
 <div class="col-md-12">
-
+<center>
+<h2>รายรับรายวัน</h2>
  <table class="table table-bordered">
  <thead>
  <tr>
- <th>NO</th>
- <th>orderID</th>
- <th>Day</th>
- <th>Name</th>
- <th>Price</th>
- <th>Total</th>
+ <th>รหัสการสั่งซื้อ</th>
+ <th>วันที่</th>
+ <th>ยอดการสั่งซื้อ(บาท)</th>
+
  </tr>
  </thead>
  <tbody>
- <?php $i=1; while ($result = mysqli_fetch_assoc($sql)) { ?>
+ <?php
+ $total =0;
+  while ($result = mysqli_fetch_array($sql)) {
+   $total += $result['total_cost'];
+   ?>
  <tr>
- <td><?php echo $i;?></td>
- <td><?php echo $result['OrderID'];?></td>
- <td><?php echo $result['Day'];?></td>
- <td><?php echo $result['Name'];?></td>
- <td><?php echo $result['Price'];?></td>
- <td><?php echo $result['Total'];?></td>
+
+ <td><?php echo $result['order_ID'];?></td>
+ <td><?php echo $result['order_Date'];?></td>
+ <td><?php echo number_format($result['total_cost'],2);?></td>
+
+
  </tr>
- <?php $i++; } ?>
+ <?php  } ?>
+<td>รวมยอดการสั่งซื้อ </td>
+<td></td>
+<td><?php echo number_format($total,2);?></td>
  </tbody>
  </table>
+</center>
 </div>
+</body>

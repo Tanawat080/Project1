@@ -9,13 +9,20 @@ if (!$_SESSION["IdNo"]){  //check session
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Case</title>
+  <title>STL Creative</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="home2.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		@media print{
+				#hid{
+					display:none;
+				}
+		}
+	</style>
 </head>
 <body>
 <style>
@@ -32,9 +39,9 @@ label{
 	font-family: "TH SarabunPSK";
 	font-size: 20px;
 }
-h3{
+h2{
 	font-family: "TH SarabunPSK";
-	font-size: 35px;
+
 }
 link{
 	color: #000000;
@@ -89,7 +96,7 @@ link{
 </div>
 </nav>
 
-<div align="right" class="a">
+<div align="right" class="a" id="hid">
 <table  width="12%" hight="10%" border="1">
 	<tr  bgcolor="#FCCCCF">
 		<td>
@@ -119,7 +126,7 @@ include 'connectt.php';
         <link href="css/bootstrap-theme.min.css" rel="stylesheet">
         <style>
             body{
-                margin-top: 0px;
+                margin-top: 20px;
             }
             .loading{
                 background-image: url("ajax-loader.gif");
@@ -132,17 +139,17 @@ include 'connectt.php';
     </head>
     <body>
 
-        <center><h2><label for="textsearch" >รายการสรุปยอดรายวัน</label></h2></center>
+
         <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-       <p align="center"> <a href="day.php" class="btn btn-primary">Print</a> </p>
-        <div class="container">
+       <p align="center">   <button class="btn btn-primary" onClick="window.print()"> พิมพ์ </button></p>
+        <div class="container" id="hid">
             <div class="row">
                 <div class="col-md-12">
                     <form class="form-inline" name="searchform" id="searchform">
                         <br><div class="form-group">
 
-                            <label for="textsearch" >ชื่อวัน</label>
-                            <input type="text" name="Day" id="Day" class="form-control" placeholder="ข้อความ คำค้นหา!" autocomplete="off">
+                            <label for="textsearch" >ค้นหาโดย วันที่ : (ปปปป-ดด-วว)</label>
+                            <input type="text" name="orderDate" id="orderDate" class="form-control" placeholder="ข้อความ คำค้นหา!" autocomplete="off">
                         </div></form></br>
                         <br><button type="button" class="btn btn-primary" id="btnSearch">
                             <span class="glyphicon glyphicon-search"></span>
@@ -151,11 +158,13 @@ include 'connectt.php';
                     </form>
                 </div>
             </div>
+				</div>
+						<div class="container">
             <div class="loading"></div>
             <div class="row" id="list-data" style="margin-top: 10px;">
 
             </div>
-        </div>
+</div>
         <script type="text/javascript" src="jquery-1.11.2.min.js"></script>
         <script type="text/javascript">
             $(function () {
@@ -163,7 +172,7 @@ include 'connectt.php';
                     $.ajax({
                         url: "daysearch.php",
                         type: "post",
-                        data: {Day: $("#Day").val()},
+                        data: {orderDate: $("#orderDate").val()},
                         beforeSend: function () {
                             $(".loading").show();
                         },

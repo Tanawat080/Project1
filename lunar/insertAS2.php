@@ -42,10 +42,16 @@ label{
 			<li ><a href="adminpage.php">หน้าหลัก</a></li>
 			<li ><a href="manageproduct.php">จัดการข้อมูลสินค้า</a></li>
 			<li><a href="contact1.php">จัดการข้อมูลร้าน</a></li>
-
-			<li><a href="#">จัดการสถานะการสั่งซื้อ</a></li>
+			<li><a href="manage_order.php">จัดการสถานะการสั่งซื้อ</a></li>
 			<li><a href="view_customer.php">ข้อมูลลูกค้า</a></li>
-			<li><a href="#">รายงาน</a></li>
+			<li><a href="owner_improve.php">ประเมินราคาสินค้า</a></li>
+			<li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">รายงาน
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="incomeday1.php">รายรับรายวัน</a></li>
+          <li><a href="incomemonth.php">รายรับรายเดือน</a></li>
+          <li><a href="incomeyear.php">รายรับรายปี</a></li>
     </ul>
 	  </div>
 </nav>

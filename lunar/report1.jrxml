@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fc1e804b-038c-4789-9afb-ca3c176a9e1f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     perday.`OrderID` AS perday_OrderID,
+     perday.`OrderDate` AS perday_OrderDate,
+     perday.`Total` AS perday_Total,
+     perday.`CustomerID` AS perday_CustomerID,
+     permonth.`Month` AS permonth_Month,
+     permonth.`Circulation` AS permonth_Circulation,
+     permonth.`Income` AS permonth_Income,
+     permonth.`Increase` AS permonth_Increase,
+     peryear.`NO` AS peryear_NO,
+     peryear.`Company` AS peryear_Company,
+     peryear.`2012` AS peryear_2012,
+     peryear.`2013` AS peryear_2013,
+     peryear.`2014` AS peryear_2014,
+     peryear.`2015` AS peryear_2015,
+     peryear.`2016` AS peryear_2016,
+     peryear.`2017` AS peryear_2017,
+     peryear.`Total` AS peryear_Total,
+     vat.`NO` AS vat_NO,
+     vat.`Circulation` AS vat_Circulation,
+     vat.`vat` AS vat_vat,
+     vat.`Total` AS vat_Total
+FROM
+     `perday` perday,
+     `permonth` permonth,
+     `peryear` peryear,
+     `vat` vat]]>
+	</queryString>
+	<field name="perday_OrderID" class="java.lang.Integer"/>
+	<field name="perday_OrderDate" class="java.sql.Date"/>
+	<field name="perday_Total" class="java.lang.Integer"/>
+	<field name="perday_CustomerID" class="java.lang.Integer"/>
+	<field name="permonth_Month" class="java.lang.String"/>
+	<field name="permonth_Circulation" class="java.lang.Integer"/>
+	<field name="permonth_Income" class="java.lang.Integer"/>
+	<field name="permonth_Increase" class="java.lang.Integer"/>
+	<field name="peryear_NO" class="java.lang.Integer"/>
+	<field name="peryear_Company" class="java.lang.String"/>
+	<field name="peryear_2012" class="java.lang.Integer"/>
+	<field name="peryear_2013" class="java.lang.Integer"/>
+	<field name="peryear_2014" class="java.lang.Integer"/>
+	<field name="peryear_2015" class="java.lang.Integer"/>
+	<field name="peryear_2016" class="java.lang.Integer"/>
+	<field name="peryear_2017" class="java.lang.Integer"/>
+	<field name="peryear_Total" class="java.lang.Integer"/>
+	<field name="vat_NO" class="java.lang.Integer"/>
+	<field name="vat_Circulation" class="java.lang.Integer"/>
+	<field name="vat_vat" class="java.lang.String"/>
+	<field name="vat_Total" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="56" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="5c589bf5-1b82-4564-a816-f8724e3ef06f"/>
+				<text><![CDATA[perday_OrderID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="2" width="100" height="20" uuid="7e360c99-c2db-446b-9368-7a5b73e626d4"/>
+				<text><![CDATA[perday_OrderDate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="2" width="100" height="20" uuid="b500a4ac-5814-441e-ae1b-32a4a9ee6a33"/>
+				<text><![CDATA[perday_Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="2" width="100" height="20" uuid="8e6c4287-c639-492f-90ed-c7afe7804bd9"/>
+				<text><![CDATA[perday_CustomerID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="2" width="100" height="20" uuid="0f8e452e-99f8-468a-aca3-7a271faac250"/>
+				<text><![CDATA[peryear_NO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="470" y="0" width="100" height="20" uuid="03496473-da1c-43f1-81d0-ce28dab93769"/>
+				<textFieldExpression><![CDATA[$F{perday_Total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="121e84f3-1949-4de9-bc17-e9dd96208000"/>
+				<textFieldExpression><![CDATA[$F{perday_OrderID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="3e943438-bcca-4e16-807e-e7bec59e43cd"/>
+				<textFieldExpression><![CDATA[$F{perday_OrderDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="427" y="0" width="100" height="20" uuid="bc060016-892f-4a11-8997-abded5219e77"/>
+				<textFieldExpression><![CDATA[$F{perday_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="6cb11aac-402d-4379-a863-3042bd917d54"/>
+				<textFieldExpression><![CDATA[$F{perday_CustomerID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="20" uuid="cc955656-5c97-4c81-9afd-5dcc57b864b9"/>
+				<textFieldExpression><![CDATA[$F{peryear_NO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

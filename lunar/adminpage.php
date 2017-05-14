@@ -53,7 +53,7 @@ label{
           <li><a href="incomeday1.php">รายรับรายวัน</a></li>
           <li><a href="incomemonth.php">รายรับรายเดือน</a></li>
           <li><a href="incomeyear.php">รายรับรายปี</a></li>
-					  <li><a href="vatt.php">รายรับรายปี(รวมภาษี)</a></li>
+				
 					</ul>
 				</li>
 				<form class="navbar-form navbar-left" method="post" action="search_product_owner1.php">

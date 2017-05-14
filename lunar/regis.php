@@ -6,7 +6,8 @@
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css"></head>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+</head>
 <style>
 
 
@@ -40,13 +41,22 @@ label{
   font-family: "TH SarabunPSK";
   font-size: 20px;
 }
-div.abcd{
+.abcd{
   font-family: "TH SarabunPSK";
-  font-size: 20px;
-}div{
+  font-size: 40px;
+}
+div{
   font-family: "TH SarabunPSK";
   font-size: 20px;
 }
+div.ab{
+  font-family: "TH SarabunPSK";
+  font-size: 70px;
+
+}
+
+
+
 </style>
 <body>
 
@@ -131,19 +141,18 @@ div.abcd{
 	         }
       </script>
 
-        <div class="abcd">
-        <center><font size="7"> ลงทะเบียน </font><br></center>
 
-      <center><div class="form-group" >
-        <labelfor="name">ชื่อ-สกุล : </label>
-        <input type="text" style="width:450px"; class="form-control" name="name" value="" />
-
-      <label for="name">รหัสผ่าน :</label><input type="password" style="width:450px"; class="form-control" name="passwordcus" value="" placeholder="รหัสผ่าน 8-12 ตัว" />
-        <label for="name">ที่อยู่ :</label><input type="text" style="width:450px"; class="form-control" name="address" value="" />
-          <label for="name">เบอร์โทรศัพท์ : </label><input type="text" style="width:450px"; class="form-control" name="tel" value="" maxlength="10" onKeyUp="if(isNaN(this.value) ){ alert('กรุณากรอกตัวเลข'); this.value='';}" />
-          <label for="name">หมายเลขบัตรประชาชน :</label><input type="text" style="width:450px"; class="form-control" name="idenNo" value="" maxlength="13" onKeyUp="if(isNaN(this.value)){ alert('กรุณากรอกตัวเลข'); this.value='';}" />
+<div class="w3-card-4">
+  <div class="abcd">
+  <center> <div class="ab">ลงทะเบียน</div></center>
+      <center><div class="w3-container" >
+        <labelfor="name">ชื่อ-สกุล : </label><input type="text" name="name" value="" class="w3-input w3-animate-input" style="width:200px"/>
+        <label for="name">รหัสผ่าน :</label><input type="password" class="w3-input w3-animate-input" style="width:200px" name="passwordcus" value="" placeholder="รหัสผ่าน 8-12 ตัว" />
+        <label for="name">ที่อยู่ :</label><input type="text" class="w3-input w3-animate-input" style="width:200px" name="address" value="" />
+        <label for="name">เบอร์โทรศัพท์ : </label><input type="text" class="w3-input w3-animate-input" style="width:200px" name="tel" value="" maxlength="10" onKeyUp="if(isNaN(this.value) ){ alert('กรุณากรอกตัวเลข'); this.value='';}" />
+        <label for="name">หมายเลขบัตรประชาชน :</label><input type="text" class="w3-input w3-animate-input" style="width:200px" name="idenNo" value="" maxlength="13" onKeyUp="if(isNaN(this.value)){ alert('กรุณากรอกตัวเลข'); this.value='';}" />
       </div><!-- <input type="submit" value="ลงทะเบียน" /> -->
-        <center><button  class="form-control" style="width:100px";><a>ลงทะเบียน</a></button><center>
+        <center><br><button  class="form-control" style="width:100px";><a>ลงทะเบียน</a></button><br><center>
        </div>
 
     </form>

@@ -98,6 +98,7 @@ Licence URI: http://www.os-templates.com/template-terms
     <ul class="nav navbar-nav navbar-center">
       <li><a href="regis.php"><span class="glyphicon glyphicon-user"></span>สมัครสมาชิก</a></li>
       <li><a href="form_login.php"><span class="glyphicon glyphicon-log-in"></span>ลงชื่อเข้าใช้</a></li>
+
       <form class="navbar-form navbar-left" method="post" action="search_product.php">
       <div class="form-group">
         <input type="text" name="search"class="form-control" placeholder="ค้นหา เช่น (ตู้จดหมาย,ประตูด้านนอก)">
