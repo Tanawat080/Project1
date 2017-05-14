@@ -168,6 +168,42 @@ p{
 
 
   </div>
+  <div class="wrapper row4">
+    <footer id="footer" class="clear">
+      <!-- ################################################################################################ -->
+      <center><div class="one_quarter first">
+        <ul class="w3-ul">
+        <li class="w3-xxxlarge"><i class="fa fa-home"></i> </li>
+      </ul>
 
+      </div>
+      <div class="one_quarter">
+
+        <address class="btmspace-15">
+        บ้านสุรพล สแตนเลส<br>
+        24/53  &amp; หมู่ 1<br>
+
+        </address>
+
+      </div>
+      <div class="one_quarter">
+
+        <address class="btmspace-15">
+          ต.บางม่วง อ.ตะกั่วป่า<br>
+          จ.พังงา 82110
+
+        </address>
+
+      </div>
+      <div class="one_quarter">
+        <ul class="nospace">
+          <li class="btmspace-10"><span class="fa fa-phone"></span> 081-326-6568</li>
+          <li><span class="fa fa-envelope-o"></span> suraphol@email.com</li>
+        </ul>
+      </div>
+  </center>
+      <!-- ################################################################################################ -->
+    </footer>
+  </div>
 </body>
 </html>

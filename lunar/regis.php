@@ -10,7 +10,7 @@
 <style>
 
 
-.button {
+button {
   background-color: #838B83; /* Green */
   border: none;
   color: white;
@@ -24,13 +24,13 @@
   cursor: pointer;
 }
 
-.button1 {width: 50%;}
+.button1 {width: 30%;}
 .button2 {width: 50%;}
 .button3 {width: 100%;}
 .header a{
     font-family: "TH SarabunPSK";
-    font-size: 50px;
-    color: #696969;
+    font-size: 80px;
+    color: #FFFFFF;
 }
 a{
   font-family: "TH SarabunPSK";
@@ -41,6 +41,9 @@ label{
   font-size: 20px;
 }
 div.abcd{
+  font-family: "TH SarabunPSK";
+  font-size: 20px;
+}div{
   font-family: "TH SarabunPSK";
   font-size: 20px;
 }
@@ -131,14 +134,16 @@ div.abcd{
         <div class="abcd">
         <center><font size="7"> ลงทะเบียน </font><br></center>
 
-        <div class="form-group"><label for="name">ชื่อ-สกุล : </label>
-        <input type="text" class="form-control" name="name" value="" /></div>
-        <label for="name">รหัสผ่าน </label><input type="password" class="form-control" name="passwordcus" value="" placeholder="รหัสผ่าน 8-12 ตัว" />
-        <label for="name">ที่อยู่ </label><input type="text" class="form-control" name="address" value="" />
-        <label for="name">เบอร์โทรศัพท์ </label><input type="text" class="form-control" name="tel" value="" maxlength="10" onKeyUp="if(isNaN(this.value) ){ alert('กรุณากรอกตัวเลข'); this.value='';}" />
-        <label for="name">หมายเลขบัตรประชาชน </label><input type="text" class="form-control" name="idenNo" value="" maxlength="13" onKeyUp="if(isNaN(this.value)){ alert('กรุณากรอกตัวเลข'); this.value='';}" />
-        <!-- <input type="submit" value="ลงทะเบียน" /> -->
-        <center> <br><button class="button button2">ลงทะเบียน</button><center>
+      <center><div class="form-group" >
+        <labelfor="name">ชื่อ-สกุล : </label>
+        <input type="text" style="width:450px"; class="form-control" name="name" value="" />
+
+      <label for="name">รหัสผ่าน :</label><input type="password" style="width:450px"; class="form-control" name="passwordcus" value="" placeholder="รหัสผ่าน 8-12 ตัว" />
+        <label for="name">ที่อยู่ :</label><input type="text" style="width:450px"; class="form-control" name="address" value="" />
+          <label for="name">เบอร์โทรศัพท์ : </label><input type="text" style="width:450px"; class="form-control" name="tel" value="" maxlength="10" onKeyUp="if(isNaN(this.value) ){ alert('กรุณากรอกตัวเลข'); this.value='';}" />
+          <label for="name">หมายเลขบัตรประชาชน :</label><input type="text" style="width:450px"; class="form-control" name="idenNo" value="" maxlength="13" onKeyUp="if(isNaN(this.value)){ alert('กรุณากรอกตัวเลข'); this.value='';}" />
+      </div><!-- <input type="submit" value="ลงทะเบียน" /> -->
+        <center><button  class="form-control" style="width:100px";><a>ลงทะเบียน</a></button><center>
        </div>
 
     </form>

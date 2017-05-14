@@ -5,7 +5,14 @@
 <body>
 <?php
 include 'testdb.php';
-		$price = $_POST["price"];
+			if(!$price){
+				$price=0;
+			}else {
+						$price = $_POST["price"];
+			}
+
+
+
 
 		$status = $_POST["status"];
 

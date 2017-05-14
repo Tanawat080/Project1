@@ -59,7 +59,13 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css"></head>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script></head>
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 <title>Shopping Cart </title>
 <!-- Latest compiled and minified CSS -->
@@ -115,7 +121,10 @@
         font-family: "TH SarabunPSK";
         font-size: 50px;
         color: #696969;
-    }
+    }div.transbox
+      {
+    		color: #FFFFFF;
+      }
     a{
       font-family: "TH SarabunPSK";
       font-size: 20px;
@@ -155,6 +164,21 @@
 
       </form>
       </ul>
+      <?php
+      include ("testdb.php");
+      $strSQL = mysqli_query($mysqli,"SELECT * FROM customer WHERE identification_No='".$_SESSION['IdNo']."'");
+      $objResult = mysqli_fetch_array($strSQL);
+
+
+      ?>
+      <div align="right" class="transbox">
+
+            ชื่อผู้ใช้ :
+            <?php echo($objResult['customer_Name']);?>
+            <?php //session_destroy();?>
+            <strong><a href="logout.php">Log out</a></strong>
+
+    </div>
     </div>
   </nav>
   <body id="top">
@@ -176,17 +200,18 @@
 
       <nav id="mainav" class="fl_right" color="red">
         <ul class="clear">
-          <li class="active"><a href="index1.php">หน้าหลัก</a></li>
-          <li><a href="HT_order.php">วิธีการสั่งซื้อ</a></li>
-          <li><a href="HT_payment.php">วิธีการชำระเงิน</a></li>
-          <li><a href="map.php">แผนที่ร้าน</a></li>
-          <li><a href="contactcus.php">ติดต่อเรา</a></li>
+          <li class="active"><a href="userpage.php">หน้าหลัก</a></li>
+          <li><a href="HT_order1.php">วิธีการสั่งซื้อ</a></li>
+          <li><a href="HT_payment1.php">วิธีการชำระเงิน</a></li>
+          <li><a href="map1.php">แผนที่ร้าน</a></li>
+          <li><a href="contactcus1.php">ติดต่อเรา</a></li>
         </ul>
       </nav>
       </div>
 <?php //include("menu.php");?>
 <br>
 <br>
+<body>
 <div class="container">
   <div class="row">
 
@@ -270,7 +295,7 @@ if(!empty($_SESSION['shopping_cart']))
         <tr>
           <td></td>
           <td colspan="7" align="right">
-            <a href="format_1.php" class="btn btn-primary">กลับไปเลือกสินค้า</a>
+            <a href="format_2.php" class="btn btn-primary">กลับไปเลือกสินค้า</a>
             <a href="testcart.php?act=Cancel-Cart" class="btn btn-danger"> ยกเลิกตะกร้าสินค้า </a>
           <a><button type="submit" name="button" id="button" class="btn btn-warning"> คำนวณราคาใหม่ </button></a>
             <a><button type="button" name="Submit2"  onclick="window.location='confirm1.php';" class="btn btn-primary">
@@ -281,7 +306,9 @@ if(!empty($_SESSION['shopping_cart']))
 
     </div>
   </div>
-</div>
+
+
+
 </body>
 </html>
 <?php }?>

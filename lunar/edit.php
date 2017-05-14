@@ -14,6 +14,7 @@ if (!$_SESSION["IdNo"]){  //check session
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="home2.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -89,37 +90,37 @@ h3{
 <!-- logout ที่ล็อคเอาท์-->
 <br><br>
 <center><h3> แก้ไขข้อมูล </h3></center>
-
+<center>
 <div class="container">
 
-		<form name="form1" method="post" action="edit2.php?product_IMG=<?php echo $_GET["product_IMG"];?>" enctype="multipart/form-data">
+		<form name="form1" method="post" action="edit2.php?product_ID=<?php echo $_GET["product_ID"];?>" enctype="multipart/form-data">
 						<?php
 						include ("testdb.php");
-						$strSQL = mysqli_query($mysqli,"SELECT * FROM product WHERE product_IMG='".$_GET["product_IMG"]."'");
+						$strSQL = mysqli_query($mysqli,"SELECT * FROM product WHERE product_ID='".$_GET["product_ID"]."'");
 						$objResult = mysqli_fetch_array($strSQL);
 						?>
 
 		<div class="form-group">
 			<label for="idPD">ชื่อสินค้า : </label>
-			<font face = "MS Sans Serif"><input type="text" class="form-control" id="productName" name="productName" value="<?php echo $objResult["product_Name"];?>"></font>
+			<font face = "MS Sans Serif"><input type="text" class="form-control" style="width:450px"; id="productName" name="productName" value="<?php echo $objResult["product_Name"];?>"></font>
 		</div>
 
 		<div class="form-group">
 			<label for="des">รายละเอียดสินค้า : </label>
-			<font face = "MS Sans Serif"><textarea type="text" class="form-control" id="ProductDescription" name="ProductDescription" ><?php echo $objResult["Description"];?></textarea></font>
+			<font face = "MS Sans Serif"><textarea type="text" class="form-control" style="width:450px"; id="ProductDescription"  name="ProductDescription" ><?php echo $objResult["Description"];?></textarea></font>
 		</div>
 
 		<div class="form-group">
 			<label for="des">ราคาต่อหน่วย : </label>
-			<font face = "MS Sans Serif"><input type="text" class="form-control" id="ProductPrice" name="ProductPrice" value="<?php echo $objResult["Price"];?>"></font>
+			<font face = "MS Sans Serif"><input type="text" class="form-control" id="ProductPrice" style="width:450px"; name="ProductPrice" value="<?php echo $objResult["Price"];?>"></font>
 		</div>
 
 			<div class="form-group">
-				<label for="des">รูปสินค้า : </label>
+				<label for="des">รูปสินค้า : </label><br>
 				<img src="pic/<?php echo $objResult["product_IMG"];?>"><br><br>
 				<input type="hidden" name="hdnOldFile" value="<?php echo $objResult["product_IMG"];?>">
-				<font face = "MS Sans Serif"><input type="file" class="form-control" id="fileUpload" name="fileUpload" ></font><br><br>
-				<button class="button button3">ตกลง</button></center>
+				<font face = "MS Sans Serif"><input type="file" style="width:450px"; class="form-control" id="fileUpload" name="fileUpload" ></font><br><br>
+				<button class="form-control" style="width:100px";>ตกลง</button></center>
 			</div>
 
 

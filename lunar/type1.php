@@ -120,7 +120,7 @@ echo '<input type="hidden" name="type_ID" value="'.$a.'">'."\n";
  <td><center><?php echo $objResult["Price"];?></center></td>
 
 	<div class="label">
- <td border="0"><center><a href="edit.php?product_IMG=<?php echo $objResult["product_IMG"];?>">เเก้ไขข้อมูล</a></center></td>
+ <td border="0"><center><a href="edit.php?product_ID=<?php echo $objResult["product_ID"];?>">เเก้ไขข้อมูล</a></center></td>
  <td border="0"><center><a href="delete.php?product_ID=<?php echo $objResult["product_ID"];?>" onClick="return confirmDelete();">ลบ</a></center></td>
 
 

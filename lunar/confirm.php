@@ -287,7 +287,7 @@ include ('testdb.php');
 				 }
 				 ?>
 			 </table>
-			 <button type="button" class="btn btn-success" onclick="window.location='userpage.php';">เสร็จสิ้น</button>
+			 <center><button type="button" class="btn btn-success" onclick="window.location='userpage.php';">เสร็จสิ้น</button>
 </div>
 
 

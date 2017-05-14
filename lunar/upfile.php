@@ -9,7 +9,7 @@ if (!$_SESSION["IdNo"]){  //check session
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Case</title>
+  <title>STL Creative</title>
   <meta charset="utf-8">
     <link href="h.css" rel="stylesheet" >
   <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
@@ -75,7 +75,10 @@ h2{
 p{
   font-family: "TH SarabunPSK";
   font-size: 20px;
-}
+}div.transbox
+	{
+		color: #FFFFFF;
+	}
 
             }.button {
               background-color: #838B83; /* Green */
@@ -159,6 +162,21 @@ input[type='range'] {
 
     </form>
     </ul>
+		<?php
+		include ("testdb.php");
+		$strSQL = mysqli_query($mysqli,"SELECT * FROM customer WHERE identification_No='".$_SESSION['IdNo']."'");
+		$objResult = mysqli_fetch_array($strSQL);
+
+
+		?>
+		<div align="right" class="transbox">
+
+					ชื่อผู้ใช้ :
+					<?php echo($objResult['customer_Name']);?>
+					<?php //session_destroy();?>
+					<strong><a href="logout.php">Log out</a></strong>
+
+	</div>
   </div>
 </nav>
 
@@ -180,7 +198,7 @@ input[type='range'] {
   <!-- ################################################################################################ -->
   <header id="header" class="clear">
     <div class="header">
-      <a class="navbar-brand" href="#">บ้านสุรพล สแตนเลส</a>
+      <a class="navbar-brand" >บ้านสุรพล สแตนเลส</a>
     </div>
     <!-- ################################################################################################ -->
 
@@ -188,11 +206,11 @@ input[type='range'] {
 
     <nav id="mainav" class="fl_right" color="red">
       <ul class="clear">
-        <li class="active"><a href="index1.php">หน้าหลัก</a></li>
-        <li><a href="#">วิธีการสั่งซื้อ</a></li>
-        <li><a href="#">วิธีการชำระเงิน</a></li>
-        <li><a href="#">แผนที่ร้าน</a></li>
-        <li><a href="contactcus.php">ติดต่อเรา</a></li>
+				<li class="active"><a href="userpage.php">หน้าหลัก</a></li>
+        <li><a href="HT_order1.php">วิธีการสั่งซื้อ</a></li>
+        <li><a href="HT_payment1.php">วิธีการชำระเงิน</a></li>
+        <li><a href="map1.php">แผนที่ร้าน</a></li>
+        <li><a href="contactcus1.php">ติดต่อเรา</a></li>
       </ul>
     </nav>
     </div>
@@ -230,6 +248,43 @@ input[type='range'] {
 
 </form>
   </div>
+	<div class="wrapper row4">
+		<footer id="footer" class="clear">
+			<!-- ################################################################################################ -->
+			<center><div class="one_quarter first">
+				<ul class="w3-ul">
+				<li class="w3-xxxlarge"><i class="fa fa-home"></i> </li>
+			</ul>
+
+			</div>
+			<div class="one_quarter">
+
+				<address class="btmspace-15">
+				บ้านสุรพล สแตนเลส<br>
+				24/53  &amp; หมู่ 1<br>
+
+				</address>
+
+			</div>
+			<div class="one_quarter">
+
+				<address class="btmspace-15">
+					ต.บางม่วง อ.ตะกั่วป่า<br>
+					จ.พังงา 82110
+
+				</address>
+
+			</div>
+			<div class="one_quarter">
+				<ul class="nospace">
+					<li class="btmspace-10"><span class="fa fa-phone"></span> 081-326-6568</li>
+					<li><span class="fa fa-envelope-o"></span> suraphol@email.com</li>
+				</ul>
+			</div>
+	</center>
+			<!-- ################################################################################################ -->
+		</footer>
+	</div>
 </body>
 </html>
 <?php }?>

@@ -13,7 +13,8 @@ $result = mysqli_query($con,$sql);
 
 $row = mysqli_fetch_array($result);
 
-    echo "ราคารวม : ".$row['width']*$row['height']*$row['Price']." บาท";
+    echo "ราคารวม : ".number_format($row['width']*$row['height']*$row['Price'],2)." บาท";
+  echo "<HR>";
 
 mysqli_close($con);
 ?>

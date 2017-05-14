@@ -200,7 +200,7 @@ Licence URI: http://www.os-templates.com/template-terms
         <p>มีรูปแบบที่มากมาย และหลายหลายให้คุณได้เลือกสรร</p>
       </article>
       <article class="one_quarter"><i class="fa fa-3x fa-paint-brush btmspace-30"></i>
-        <h4 class="font-x1 uppercase"><a href="menudesign.php">ออกแบบด้วยตนเอง</a></h4>
+        <h4 class="font-x1 uppercase"><a href="selfDesign.php">ออกแบบด้วยตนเอง</a></h4>
         <p>มีบริการสำหรับลูกค้าที่ต้องการออกแบบได้ด้วยตัวเอง</p>
       </article>
       <article class="one_quarter"><i class="fa fa-3x fa-credit-card btmspace-30"></i>

@@ -69,14 +69,15 @@ link{
 			<li><a href="contact1.php">จัดการข้อมูลร้าน</a></li>
 			<li><a href="manage_order.php">จัดการสถานะการสั่งซื้อ</a></li>
 			<li><a href="view_customer.php">ข้อมูลลูกค้า</a></li>
+			<li><a href="owner_improve.php">ประเมินราคาสินค้า</a></li>
 			<li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">รายงาน
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="incomeday1.php">รายรับรายวัน</a></li>
-          <li><a href="incomemonth.php">รายรับรายเดือน</a></li>
-          <li><a href="incomeyear.php">รายรับรายปี</a></li>
-					  <li><a href="vatt.php">รายรับรายปี(รวมภาษี)</a></li>
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">รายงาน
+				<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="incomeday1.php">รายรับรายวัน</a></li>
+					<li><a href="incomemonth.php">รายรับรายเดือน</a></li>
+					<li><a href="incomeyear.php">รายรับรายปี</a></li>
+						<li><a href="vatt.php">รายรับรายปี(รวมภาษี)</a></li>
 					</ul>
 				</li>
 				<form class="navbar-form navbar-left" method="post" action="search_product_owner1.php">
@@ -115,26 +116,26 @@ link{
 						$strSQL = mysqli_query($mysqli,"SELECT * FROM customer WHERE customer_ID='".$_GET["customer_ID"]."'");
 						$objResult = mysqli_fetch_array($strSQL);
 						?>
-
+<center>
 		<div class="form-group">
 			<label for="idPD">ชื่อ-สกุล : </label>
-			<font face = "MS Sans Serif"><input type="text" class="form-control" id="customer_Name" name="customer_Name" value="<?php echo $objResult["customer_Name"];?>"></font>
+			<font face = "MS Sans Serif"><input type="text" style="width:450px"; class="form-control" id="customer_Name" name="customer_Name" value="<?php echo $objResult["customer_Name"];?>"></font>
 		</div>
 
 		<div class="form-group">
 			<label for="des">ที่อยู่ : </label>
-			<font face = "MS Sans Serif"><textarea type="text" class="form-control" id="address" name="address" ><?php echo $objResult["address"];?></textarea></font>
+			<font face = "MS Sans Serif"><textarea type="text" style="width:450px"; class="form-control" id="address" name="address" ><?php echo $objResult["address"];?></textarea></font>
 		</div>
 
 		<div class="form-group">
 			<label for="des">เบอร์โทรศัพท์ : </label>
-			<font face = "MS Sans Serif"><input type="text" class="form-control" id="phone_No" name="phone_No" value="<?php echo $objResult["phone_No"];?>"></font>
+			<font face = "MS Sans Serif"><input type="text" style="width:450px"; class="form-control" id="phone_No" name="phone_No" value="<?php echo $objResult["phone_No"];?>"></font>
 		</div>
 
 			<div class="form-group">
 				<label for="des">รหัสบัตรประชาชน : </label>
-				<font face = "MS Sans Serif"><input type="text" class="form-control" id="identification_No" name="identification_No" value="<?php echo $objResult["identification_No"];?>"></font>
-				<center><br><button class="button button3">ตกลง</button></center>
+				<font face = "MS Sans Serif"><input type="text" class="form-control" style="width:450px"; id="identification_No" name="identification_No" value="<?php echo $objResult["identification_No"];?>"></font>
+				<br><button class="form-control" style="width:100px";>ตกลง</button></center>
 			</div>
 
 

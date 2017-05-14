@@ -21,10 +21,13 @@ if (!$_SESSION["IdNo"]){
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 <style>
 .header a{
-		font-family: "TH SarabunPSK";a
-		font-size: 50px;
+		font-family: "TH SarabunPSK";
+		font-size: 80px;
 		color: #FFFFFF;
-}
+}div.transbox
+  {
+		color: #FFFFFF;
+  }
 a{
 	font-family: "TH SarabunPSK";
 	font-size: 20px;
@@ -33,54 +36,65 @@ label{
 	font-family: "TH SarabunPSK";
 	font-size: 20px;
 }
-div.transbox
-  {
-		color: #FFFFFF;
-  }
-link{
-	color: #FFFFFF;
-}            div.box
+div{
+	font-family: "TH SarabunPSK";
+	font-size: 20px;
+
+}
+h2{
+	font-family: "TH SarabunPSK";
+
+
+}
+p{
+	font-family: "TH SarabunPSK";
+	font-size: 20px;
+}
+			.imghover1 {
+			display: block;
+			width: 350px;
+			height: 240px;
+			background: url('img11.jpg'); /* ที่อยู่รูปภาพที่1 */
+			text-indent: -99999px;
+			}
+			.imghover1:hover {
+			background-image : url('img12.jpg'); /* ที่อยู่รูปภาพที่2 */
+			}
+
+						.imghover2 {
+						display: block;
+						width: 350px;
+						height: 240px;
+						background: url('img13.jpg'); /* ที่อยู่รูปภาพที่1 */
+						text-indent: -99999px;
+						}
+						.imghover2:hover {
+						background-image : url('img14.jpg'); /* ที่อยู่รูปภาพที่2 */
+						}
+
+						.imghover3 {
+						display: block;
+						width: 350px;
+						height: 240px;
+						background: url('img15.jpg'); /* ที่อยู่รูปภาพที่1 */
+						text-indent: -99999px;
+						}
+						.imghover3:hover {
+						background-image : url('img16.jpg'); /* ที่อยู่รูปภาพที่2 */
+						}
+						h3{
+							font-family: "TH SarabunPSK";
+							font-size: 30px;
+							color: #000000;
+
+						}
+						div.box
 {
 
 opacity:0.8;
-}h3{
-	font-family: "TH SarabunPSK";
-	font-size: 30px;
-	color: #000000;
-
-}
-.imghover1 {
-display: block;
-width: 350px;
-height: 240px;
-background: url('img11.jpg'); /* ที่อยู่รูปภาพที่1 */
-text-indent: -99999px;
-}
-.imghover1:hover {
-background-image : url('img12.jpg'); /* ที่อยู่รูปภาพที่2 */
 }
 
-			.imghover2 {
-			display: block;
-			width: 350px;
-			height: 240px;
-			background: url('img13.jpg'); /* ที่อยู่รูปภาพที่1 */
-			text-indent: -99999px;
-			}
-			.imghover2:hover {
-			background-image : url('img14.jpg'); /* ที่อยู่รูปภาพที่2 */
-			}
 
-			.imghover3 {
-			display: block;
-			width: 350px;
-			height: 240px;
-			background: url('img15.jpg'); /* ที่อยู่รูปภาพที่1 */
-			text-indent: -99999px;
-			}
-			.imghover3:hover {
-			background-image : url('img16.jpg'); /* ที่อยู่รูปภาพที่2 */
-			}
 
 </style>
 
@@ -161,11 +175,11 @@ background-image : url('img12.jpg'); /* ที่อยู่รูปภาพ�
 
     <nav id="mainav" class="fl_right" color="red">
       <ul class="clear">
-				<li class="active"><a href="index1.php">หน้าหลัก</a></li>
-        <li><a href="HT_order.php">วิธีการสั่งซื้อ</a></li>
-        <li><a href="HT_payment.php">วิธีการชำระเงิน</a></li>
-        <li><a href="map.php">แผนที่ร้าน</a></li>
-        <li><a href="contactcus.php">ติดต่อเรา</a></li>
+				<li class="active"><a href="userpage.php">หน้าหลัก</a></li>
+        <li><a href="HT_order1.php">วิธีการสั่งซื้อ</a></li>
+        <li><a href="HT_payment1.php">วิธีการชำระเงิน</a></li>
+        <li><a href="map1.php">แผนที่ร้าน</a></li>
+        <li><a href="contactcus1.php">ติดต่อเรา</a></li>
       </ul>
     </nav>
     </div>
@@ -220,7 +234,7 @@ background-image : url('img12.jpg'); /* ที่อยู่รูปภาพ�
         <p>มีรูปแบบที่มากมาย และหลายหลายให้คุณได้เลือกสรร</p>
       </article>
       <article class="one_quarter"><i class="fa fa-3x fa-paint-brush btmspace-30"></i>
-        <h4 class="font-x1 uppercase"><a href="menudesign.php">ออกแบบด้วยตนเอง</a></h4>
+        <h4 class="font-x1 uppercase"><a href="selfDesign.php">ออกแบบด้วยตนเอง</a></h4>
         <p>มีบริการสำหรับลูกค้าที่ต้องการออกแบบได้ด้วยตัวเอง</p>
       </article>
       <article class="one_quarter"><i class="fa fa-3x fa-credit-card btmspace-30"></i>

@@ -77,7 +77,10 @@ p{
 {
 
 opacity:0.8;
-}
+}div.transbox
+  {
+		color: #FFFFFF;
+  }
 
 
 </style>

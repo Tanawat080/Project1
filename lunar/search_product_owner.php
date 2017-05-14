@@ -43,10 +43,17 @@ label{
 			<li ><a href="adminpage.php">หน้าหลัก</a></li>
 			<li ><a href="manageproduct.php">จัดการข้อมูลสินค้า</a></li>
 			<li><a href="contact1.php">จัดการข้อมูลร้าน</a></li>
-
 			<li><a href="manage_order.php">จัดการสถานะการสั่งซื้อ</a></li>
 			<li><a href="view_customer.php">ข้อมูลลูกค้า</a></li>
-			<li><a href="#">รายงาน</a></li>
+			<li><a href="owner_improve.php">ประเมินราคาสินค้า</a></li>
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">รายงาน
+				<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="incomeday1.php">รายรับรายวัน</a></li>
+					<li><a href="incomemonth.php">รายรับรายเดือน</a></li>
+					<li><a href="incomeyear.php">รายรับรายปี</a></li>
+						<li><a href="vatt.php">รายรับรายปี(รวมภาษี)</a></li>
     </ul>
 		<form class="navbar-form navbar-left" method="post" action="search_product.php">
 		<div class="form-group">
@@ -153,7 +160,7 @@ echo "alert('ไม่พบข้อมูล');window.location=window.history.
             <font face="TH SarabunPSK" color="green" size="4"><B><?php echo $objResult["product_Name"];?></B></font>
             <center><a href="pic/<?php echo $objResult["product_IMG"];?>"rel="lightbox[food]"><img src="pic/<?php echo $objResult["product_IMG"];?>" width="140" height="110" border="0" /></a></center>
             <font size = "4"><?php echo $objResult["Description"];?></font><br>
-        
+
       </div>
 <?php
 }

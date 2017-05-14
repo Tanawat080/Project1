@@ -637,7 +637,10 @@
  							}h1,h2,h3,h4{
  								font-family: "TH SarabunPSK";
 
- 							}
+ 							}div.transbox
+                {
+                  color: #FFFFFF;
+                }
              </style><body>
 
          <nav class="navbar navbar-inverse">
@@ -698,11 +701,11 @@
 
              <nav id="mainav" class="fl_right" color="red">
                <ul class="clear">
-                 <li class="active"><a href="index1.php">หน้าหลัก</a></li>
-                 <li><a href="HT_order.php">วิธีการสั่งซื้อ</a></li>
-                 <li><a href="HT_payment.php">วิธีการชำระเงิน</a></li>
-                 <li><a href="map.php">แผนที่ร้าน</a></li>
-                 <li><a href="contactcus.php">ติดต่อเรา</a></li>
+                 <li class="active"><a href="userpage.php">หน้าหลัก</a></li>
+                 <li><a href="HT_order1.php">วิธีการสั่งซื้อ</a></li>
+                 <li><a href="HT_payment1.php">วิธีการชำระเงิน</a></li>
+                 <li><a href="map1.php">แผนที่ร้าน</a></li>
+                 <li><a href="contactcus1.php">ติดต่อเรา</a></li>
                </ul>
              </nav>
              </div>
@@ -711,23 +714,7 @@
 
 
            <body>
-             <SCRIPT Language="JavaScript">
 
-             function startCalc(){
-             interval = setInterval("calc()",1);
-             }
-             function calc(){
-             one = document.cal.am.value;
-             two = document.cal.price.value;
-
-             document.cal.totalprice.value = two*one;
-             document.cal.totalprice1.value = two*one;
-             }
-             function stopCalc(){
-             clearInterval(interval);
-             }
-
-             </SCRIPT>
  <form  name="cal" method="post" action="confirmself.php">
 
 <?php   $amount= $_POST["amount"];

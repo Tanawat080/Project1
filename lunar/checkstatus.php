@@ -158,11 +158,10 @@ customer_Name LIKE '%".$valueToSearch."%'
 
 }
  else {
-    $query = "select * from customer,product,`order`,order_deatail,data_status,status
-where `order`.order_ID=order_deatail.order_ID AND
+    $query = "select * from customer,`order`,data_status,status
+where
 `order`.order_ID=data_status.order_ID AND
 `order`.customer_ID=customer.customer_ID AND
-order_deatail.product_ID=product.product_ID AND
 status.status_ID=data_status.status_ID ";
     $search_result = filterTable($query);
 }
@@ -190,6 +189,7 @@ function filterTable($query)
         </style>
     </head>
     <body>
+      <div class="container">
       <center>
         <h2>เช็คสถานะ</h2>
         <div>
@@ -204,7 +204,7 @@ function filterTable($query)
                 <tr>
                     <th>รหัสออร์เดอร์</th>
                     <th>ชื่อ-สกุล</th>
-                    <th>สินค้า</th>
+
                     <th>วันที่ลงพื้นที่สำรวจ</th>
                     <th>วันที่ติดตั้ง</th>
                     <th>วันที่ออร์เดอร์</th>
@@ -219,7 +219,7 @@ function filterTable($query)
                 <tr>
                     <td><?php echo $row['order_ID'];?></td>
                     <td><?php echo $row['customer_Name'];?></td>
-                    <td><?php echo $row['product_Name'];?></td>
+
                     <td><?php echo $row['locate_Date'];?></td>
                     <td><?php echo $row['setup_Date'];?></td>
 
@@ -232,6 +232,42 @@ function filterTable($query)
 
         </form>
 </div></center>
-    </body>
+  </div>  <div class="wrapper row4">
+    <footer id="footer" class="clear">
+      <!-- ################################################################################################ -->
+      <center><div class="one_quarter first">
+        <ul class="w3-ul">
+        <li class="w3-xxxlarge"><i class="fa fa-home"></i> </li>
+      </ul>
+
+      </div>
+      <div class="one_quarter">
+
+        <address class="btmspace-15">
+        บ้านสุรพล สแตนเลส<br>
+        24/53  &amp; หมู่ 1<br>
+
+        </address>
+
+      </div>
+      <div class="one_quarter">
+
+        <address class="btmspace-15">
+          ต.บางม่วง อ.ตะกั่วป่า<br>
+          จ.พังงา 82110
+
+        </address>
+
+      </div>
+      <div class="one_quarter">
+        <ul class="nospace">
+          <li class="btmspace-10"><span class="fa fa-phone"></span> 081-326-6568</li>
+          <li><span class="fa fa-envelope-o"></span> suraphol@email.com</li>
+        </ul>
+      </div>
+  </center>
+      <!-- ################################################################################################ -->
+    </footer>
+  </div></body>
 </html>
 </html>

@@ -8,7 +8,7 @@
 		//*** Update Record ***//
 		include ("testdb.php");
 
-		$strSQL = "UPDATE `product` SET `product_Name`='".$_POST["productName"]."',`Description`='".$_POST["ProductDescription"]."',`Price`='".$_POST["ProductPrice"]."' WHERE `product_IMG` = '".$_GET["product_IMG"]."'; ";
+		$strSQL = "UPDATE `product` SET `product_Name`='".$_POST["productName"]."',`Description`='".$_POST["ProductDescription"]."',`Price`='".$_POST["ProductPrice"]."' WHERE `product_ID` = '".$_GET["product_ID"]."'; ";
 		$objQuery = mysqli_query($mysqli,$strSQL);
 
 	if($_FILES["fileUpload"]["name"] != "")
@@ -21,7 +21,7 @@
 
 			//*** Update New File ***//
 
-			$strSQL ="UPDATE `product` SET product_IMG = '".$_FILES["fileUpload"]["name"]."' WHERE `product_IMG` = '".$_GET["product_IMG"]."'; ";
+			$strSQL ="UPDATE `product` SET product_IMG = '".$_FILES["fileUpload"]["name"]."' WHERE `product_ID` = '".$_GET["product_ID"]."'; ";
 			$objQuery = mysqli_query($mysqli,$strSQL);
 
 			echo "Copy/Upload Complete<br>";

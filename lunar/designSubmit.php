@@ -10,7 +10,7 @@ if (!$_SESSION["IdNo"]){  //check session
 <html lang="en">
 <head>
 
-  <title>บ้านสุรพล สแตนเลส</title>
+  <title>STL Creative</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -49,7 +49,11 @@ link{
 {
 
 opacity:0.8;
-}
+}div.transbox
+  {
+		color: #FFFFFF;
+  }
+
 </style>
 <body>
 
@@ -67,6 +71,7 @@ opacity:0.8;
 
     </form>
     </ul>
+
     <?php
     include ("testdb.php");
     $strSQL = mysqli_query($mysqli,"SELECT * FROM customer WHERE identification_No='".$_SESSION['IdNo']."'");
@@ -103,7 +108,7 @@ opacity:0.8;
   <!-- ################################################################################################ -->
   <header id="header" class="clear">
     <div class="header">
-      <a class="navbar-brand" href="index1.php">บ้านสุรพล สแตนเลส</a>
+      <a class="navbar-brand" >บ้านสุรพล สแตนเลส</a>
     </div>
     <!-- ################################################################################################ -->
 
@@ -111,11 +116,11 @@ opacity:0.8;
 
     <nav id="mainav" class="fl_right" color="red">
       <ul class="clear">
-        <li class="active"><a href="index1.php">หน้าหลัก</a></li>
-        <li><a href="HT_order.php">วิธีการสั่งซื้อ</a></li>
-        <li><a href="HT_payment.php">วิธีการชำระเงิน</a></li>
-        <li><a href="map.php">แผนที่ร้าน</a></li>
-        <li><a href="contactcus.php">ติดต่อเรา</a></li>
+				<li class="active"><a href="userpage.php">หน้าหลัก</a></li>
+        <li><a href="HT_order1.php">วิธีการสั่งซื้อ</a></li>
+        <li><a href="HT_payment1.php">วิธีการชำระเงิน</a></li>
+        <li><a href="map1.php">แผนที่ร้าน</a></li>
+        <li><a href="contactcus1.php">ติดต่อเรา</a></li>
       </ul>
     </nav>
     </div>

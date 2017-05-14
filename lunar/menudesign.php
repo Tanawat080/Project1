@@ -117,7 +117,12 @@ p{
                 font-family: "TH SarabunPSK";
                 font-size: 18px;
                   color: #000000;
-              }
+              }font{
+	                font-family: "TH SarabunPSK";
+	              }div.transbox
+								  {
+										color: #FFFFFF;
+								  }
 
 
 
@@ -139,6 +144,21 @@ p{
 
     </form>
     </ul>
+		<?php
+		include ("testdb.php");
+		$strSQL = mysqli_query($mysqli,"SELECT * FROM customer WHERE identification_No='".$_SESSION['IdNo']."'");
+		$objResult = mysqli_fetch_array($strSQL);
+
+
+		?>
+		<div align="right" class="transbox">
+
+					ชื่อผู้ใช้ :
+					<?php echo($objResult['customer_Name']);?>
+					<?php //session_destroy();?>
+					<strong><a href="logout.php">Log out</a></strong>
+
+	</div>
   </div>
 </nav>
 
@@ -168,11 +188,11 @@ p{
 
     <nav id="mainav" class="fl_right" color="red">
       <ul class="clear">
-        <li class="active"><a href="index1.php">หน้าหลัก</a></li>
-        <li><a href="#">วิธีการสั่งซื้อ</a></li>
-        <li><a href="#">วิธีการชำระเงิน</a></li>
-        <li><a href="#">แผนที่ร้าน</a></li>
-        <li><a href="contactcus.php">ติดต่อเรา</a></li>
+				<li class="active"><a href="userpage.php">หน้าหลัก</a></li>
+        <li><a href="HT_order1.php">วิธีการสั่งซื้อ</a></li>
+        <li><a href="HT_payment1.php">วิธีการชำระเงิน</a></li>
+        <li><a href="map1.php">แผนที่ร้าน</a></li>
+        <li><a href="contactcus1.php">ติดต่อเรา</a></li>
       </ul>
     </nav>
     </div>
@@ -188,7 +208,6 @@ p{
   <tr>
 
   <th width="150"> <div align="center">รหัสการตรวจสอบ</div></th>
-  <th width="300"> <div align="center">ชื่อลูกค้า</div></th>
   <th width="300"> <div align="center">ประเภทสินค้า</div></th>
   <th width="120"> <div align="center">ราคา</div></th>
    <th width="120"> <div align="center">สถานะ</div></th>
@@ -201,8 +220,8 @@ p{
  	while($objResult = mysqli_fetch_array($strSQL)){
  				 ?>
  				 <tr>
- 				<td border="0"><center><a href="owner_improve2.php?improve_ID=<?php echo $objResult["improve_ID"];?>"><?php echo $objResult["improve_ID"];?></a></center></td>
- 				 <td><center><?php echo $objResult["customer_Name"];?></center></td>
+ 				<td border="0"><center><?php echo $objResult["improve_ID"];?></center></td>
+
  				 <td><center><?php echo $objResult["type_Name"];?></center></td>
  				 <td><center><?php echo number_format($objResult["improve_Price"],2);?></center></td>
  				 <td><center><?php echo $objResult["status_ip"];?></center></td>

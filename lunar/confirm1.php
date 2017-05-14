@@ -696,11 +696,11 @@ if (!$_SESSION["IdNo"] || empty($_SESSION['shopping_cart'])){
 
             <nav id="mainav" class="fl_right" color="red">
               <ul class="clear">
-                <li class="active"><a href="index1.php">หน้าหลัก</a></li>
-                <li><a href="HT_order.php">วิธีการสั่งซื้อ</a></li>
-                <li><a href="HT_payment.php">วิธีการชำระเงิน</a></li>
-                <li><a href="map.php">แผนที่ร้าน</a></li>
-                <li><a href="contactcus.php">ติดต่อเรา</a></li>
+								<li class="active"><a href="userpage.php">หน้าหลัก</a></li>
+			          <li><a href="HT_order1.php">วิธีการสั่งซื้อ</a></li>
+			          <li><a href="HT_payment1.php">วิธีการชำระเงิน</a></li>
+			          <li><a href="map1.php">แผนที่ร้าน</a></li>
+			          <li><a href="contactcus1.php">ติดต่อเรา</a></li>
               </ul>
             </nav>
             </div>

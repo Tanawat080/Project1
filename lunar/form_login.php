@@ -47,14 +47,17 @@
 .button3 {width: 90%;}
 .header a{
     font-family: "TH SarabunPSK";
-    font-size: 50px;
-    color: #696969;
+    font-size: 80px;
+    color: #FFFFFF;
 }
 a{
   font-family: "TH SarabunPSK";
   font-size: 20px;
 }
 label{
+  font-family: "TH SarabunPSK";
+  font-size: 20px;
+}div{
   font-family: "TH SarabunPSK";
   font-size: 20px;
 }
@@ -111,40 +114,27 @@ label{
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 
-
+<center>
   <div class="container">
     <body>
-<form class="form-inline" method="post" action="login.php">
+        <h1>ลงชื่อเข้าใช้</h1><br>
+<form  method="post" action="login.php">
 
       <div class="form-group">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <label for="idNo">รหัสประชาชน : </label>
-        <font face = "MS Sans Serif"><input type="text" class="form-control" id="idNo" name="idNo" placeholder="รหัสบัตรประชาชน"></font>
+        <font face = "MS Sans Serif"><input type="text" style="width:450px"; class="form-control" id="idNo" name="idNo" placeholder="รหัสบัตรประชาชน"></font>
       </div>
-    <br><br>
 
-    <div class="form-group">        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div class="form-group">
         <label for="Password">รหัสผ่าน :</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face = "MS Sans Serif"><input type="password" class="form-control" id="Password" name="Password" placeholder="รหัสผ่าน"></font>
+        <font face = "MS Sans Serif"><input type="password" style="width:450px"; class="form-control" id="Password" name="Password" placeholder="รหัสผ่าน"></font>
       </div>
       <center>
-
-    <br><button class="button button1" type="submit">ลงชื่อเข้าใช้ </button><br>
-    <button class="button button2" type="reset" >ล้าง</button>
-
+        <br><div class="form-inline">
+    <button class="form-control" style="width:100px"; type="submit"><a>ลงชื่อเข้าใช้</a> </button>
+    <button class="form-control" style="width:70px"; type="reset" ><a>ล้าง</a></button>
+  </div>
   </center>
 </form>
 </div>
@@ -176,62 +166,45 @@ label{
 <div class="wrapper row4">
   <footer id="footer" class="clear">
     <!-- ################################################################################################ -->
-    <div class="one_quarter first">
-      <h6 class="title">Company Details</h6>
+    <center><div class="one_quarter first">
+      <ul class="w3-ul">
+      <li class="w3-xxxlarge"><i class="fa fa-home"></i> </li>
+    </ul>
+
+    </div>
+    <div class="one_quarter">
+
       <address class="btmspace-15">
-      Company Name<br>
-      Street Name &amp; Number<br>
-      Town<br>
-      Postcode/Zip
+      บ้านสุรพล สแตนเลส<br>
+      24/53  &amp; หมู่ 1<br>
+
       </address>
+
+    </div>
+    <div class="one_quarter">
+
+      <address class="btmspace-15">
+        ต.บางม่วง อ.ตะกั่วป่า<br>
+        จ.พังงา 82110
+
+      </address>
+
+    </div>
+    <div class="one_quarter">
       <ul class="nospace">
-        <li class="btmspace-10"><span class="fa fa-phone"></span> +00 (123) 456 7890</li>
-        <li><span class="fa fa-envelope-o"></span> info@domain.com</li>
+        <li class="btmspace-10"><span class="fa fa-phone"></span> 081-326-6568</li>
+        <li><span class="fa fa-envelope-o"></span> suraphol@email.com</li>
       </ul>
     </div>
-    <div class="one_quarter">
-      <h6 class="title">From The Blog</h6>
-      <article>
-        <h2 class="nospace font-x1"><a href="#">Maecenas pretium</a></h2>
-        <time class="smallfont" datetime="2045-04-06">Friday, 6<sup>th</sup> April 2045</time>
-        <p>Vestibulumaccumsan egestibulum eu justo convallis augue estas aenean elit intesque sed.</p>
-      </article>
-    </div>
-    <div class="one_quarter">
-      <h6 class="title">Sed consectetur enim</h6>
-      <ul class="nospace linklist">
-        <li><a href="#">Nullam id est condimen</a></li>
-        <li><a href="#">Praesent eget purus ut</a></li>
-        <li><a href="#">Ut quis augue quis neque</a></li>
-        <li><a href="#">Quisque varius erat sed</a></li>
-        <li><a href="#">Fusce quis dolor et</a></li>
-      </ul>
-    </div>
-    <div class="one_quarter">
-      <h6 class="title">Grab Our Newsletter</h6>
-      <form method="post" action="#">
-        <fieldset>
-          <legend>Newsletter:</legend>
-          <input class="btmspace-15" type="text" value="" placeholder="Name">
-          <input class="btmspace-15" type="text" value="" placeholder="Email">
-          <button class="btn" type="submit" value="submit">Submit</button>
-        </fieldset>
-      </form>
-    </div>
+</center>
     <!-- ################################################################################################ -->
   </footer>
 </div>
+
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
-<div class="wrapper row5">
-  <div id="copyright" class="clear">
-    <!-- ################################################################################################ -->
-    <p class="fl_left">Copyright &copy; 2015 - All Rights Reserved - <a href="#">Domain Name</a></p>
-    <p class="fl_right">Template by <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
-    <!-- ################################################################################################ -->
-  </div>
-</div>
+
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
